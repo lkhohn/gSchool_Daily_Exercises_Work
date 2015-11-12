@@ -1,0 +1,31 @@
+
+img {
+  display: block;
+  padding: 2em;
+
+}
+
+section {
+  margin: 2em;
+  padding: 2em;
+  width: 60em;
+  height: 60em;
+  background-color: blue;
+
+}
+
+div.preview {
+  background-color: red;
+  display: inline-block;
+  width: 40%;
+  height: 100%
+}
+
+div.text {
+  background-color: green;
+  display: inline-block;
+  vertical-align: top;
+  height: 100% ;
+  width: 60%;
+  float: right;
+}

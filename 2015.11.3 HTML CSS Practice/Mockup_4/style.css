@@ -1,0 +1,23 @@
+section {
+  padding: 2em;
+  width: 30em;
+  margin: 0 auto;
+  display: block;
+}
+h1 {
+}
+h2 {
+  display:inline-block;
+}
+input {
+  display: inline-block;
+}
+div.input {
+  display: block;
+}
+footer {
+  border-style: solid;
+  border-width: thin;
+  width: 3em;
+  margin-top: 2em;
+}

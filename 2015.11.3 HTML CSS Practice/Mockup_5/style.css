@@ -1,0 +1,39 @@
+section {
+  margin: 0 auto;
+  display: block;
+  width: 50em;
+}
+div {
+  margin: 0 auto;
+  display: block;
+  width: 25em;
+}
+
+th {
+  background-color: #838380;
+  border-right-style: solid;
+  border-right-width: thick;
+  border-top-style: solid;
+  border-top-width: thick;
+}
+
+td {
+  border-right-style: solid;
+  border-right-width: thick;
+  width: 8em;
+  height: 3em;
+}
+
+tr:nth-child(odd) {
+  background-color:#bdbab7;
+}
+table {
+  border-spacing: 0;
+  border-bottom-style:solid;
+  border-bottom-width: thick;
+  border-bottom-color: black;
+}
+td:first-child, th:first-child {
+  border-left-style: solid;
+  border-left-width: thick;
+}

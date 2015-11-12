@@ -1,0 +1,32 @@
+h1 {
+  margin: 1em 2em;
+}
+div {
+  margin: 0 auto;
+  display: block;
+  width: 50em;
+  margin-left: 5em;
+}
+
+ul {
+  list-style: none;
+  border-style: solid;
+  border-width: thin;
+  display: inline-block;
+  width: 8em;
+  margin-left: 2em;
+  padding: 1em 0em 1em 3em;
+  vertical-align: top;
+}
+
+li {
+  margin-left: -2em;
+}
+
+footer {
+  border-style: solid;
+  border-width: thin;
+  display: block;
+  width: 10em;
+  margin-left: 8em;
+}
