@@ -1,0 +1,33 @@
+
+#top.s1 {
+  display: inline-block;
+  margin-top: 2em;
+  margin-left: 2em;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+  float: left;
+}
+article.left_section {
+  border-style: solid;
+  float: left;
+  margin-left: 1em;
+  width: 50em;
+  height: 12em;
+}
+
+#bottom.s2 {
+  margin-left: 2em;
+  margin-top: 2em;
+  width: 90%;
+  }
+
+.bottom1 {
+  border-style: solid;
+}
+  .bottom2 {
+    border-style: solid;
+    margin-top: 2em;
+  }
