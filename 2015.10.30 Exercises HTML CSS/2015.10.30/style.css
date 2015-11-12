@@ -1,0 +1,28 @@
+.atom {
+  border-radius: 50%;
+}
+.unsplash {
+  border-radius: 50%;
+  overflow: hidden;
+  height: 500px;
+  width: 500px;
+}
+
+
+li:nth-child(3n):after{
+content: 'fizz';
+}
+
+li:nth-child(5n):after {
+  content: 'buzz';
+}
+
+
+/*
+li:nth-child(15n) {
+  background-color: red;
+}
+*/
+li:nth-child(3n):nth-child(5n):after {
+content: 'fizzbuzz';
+}

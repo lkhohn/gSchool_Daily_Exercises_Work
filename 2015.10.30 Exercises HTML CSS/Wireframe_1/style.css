@@ -1,0 +1,94 @@
+body {
+  color: #575757;
+}
+
+/* Title */
+h1 {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  margin-left: 0.5rem;
+}
+
+
+
+/*Menu*/
+.menu {
+  height: 100%;
+  width: 10%;
+  position: absolute;
+  float: left;
+  margin-left: 0.5rem;
+  border-style: solid;
+  border-width: thin;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-top: 1em;
+}
+a {
+  text-decoration: none;
+}
+
+
+
+/*Body Paragraph */
+
+.body {
+  float: left;
+  padding-left: 1em;
+  margin-left: 11em;
+  margin-right: 15em;
+}
+
+/*Product Pictures */
+
+.column-left {
+  float: left;
+  width: 22%;
+  height: 15em;
+  margin-right: 1em;
+  margin-left: 12em;
+  margin-top: 2em;
+  border-style: solid;
+  border-width: thin;
+}
+
+.column-mid {
+  float: left;
+  width: 22%;
+  height: 15em;
+  margin-right: -1em;
+  margin-top: 2em;
+  border-style: solid;
+  border-width: thin;
+}
+
+.column-right {
+  float: left;
+  width: 22%;
+  height: 15em;
+  margin-left: 2em;
+  margin-top: 2em;
+  border-style: solid;
+  border-width: thin;
+
+}
+
+.word{
+  margin-left: 1em;
+}
+
+img {
+  height: 8em;
+  width: 8em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
+  border-style: solid;
+  border-width: thin;
+}

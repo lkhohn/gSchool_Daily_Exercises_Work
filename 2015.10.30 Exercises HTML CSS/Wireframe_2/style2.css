@@ -1,0 +1,80 @@
+body {
+  color: #575757;
+  }
+span {
+  display:inline-block;
+
+}
+
+/* Header */
+
+
+
+/* Bear section */
+.left_section {
+  width: 8em;
+  height: 8em;
+  float: left;
+}
+
+.bear_img {
+  width: 5em;
+  height: 5em;
+  margin: 2em;
+
+}
+
+#right.right_section{
+  display: inline-block;
+  float: left;
+  width: 20em;
+  height: 8em;
+  }
+
+
+/* Top_section*/
+.top_section {
+  font-size: 1.5em;
+  padding-left: 1em;
+}
+
+
+/* Bottom_section*/
+.bottom_section {
+  margin-top: 3em;
+}
+
+.img_like {
+  width: 2em;
+  height: 2em;
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.img_comment {
+  width: 2em;
+  height: 2em;
+  margin-left: 1em;
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+.word {
+  float: right;
+  margin-left: 1em;
+  margin-top: 2em;
+}
+
+#outline {
+  border-style: solid;
+  border-width: thin;
+  width: 40em;
+  height: 10em;
+}
+
+.section_2 {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}

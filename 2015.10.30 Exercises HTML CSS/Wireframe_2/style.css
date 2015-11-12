@@ -1,0 +1,63 @@
+body {
+  color: #575757;
+}
+span {
+  display:inline-block;
+
+}
+
+/* Header */
+
+
+
+/* Bear section */
+.left_section {
+  border-style: solid;
+  border-width: thin;
+  margin-right: 70em;
+}
+
+.bear_img {
+  width: 5em;
+  height: 5em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Top_section*/
+.top_section {
+  border-style: solid;
+  border-width: thin;
+  margin-left: 12em;
+  margin-bottom: 2em;
+  margin-top: -10em;
+  float: left;
+}
+
+
+/* Bottom_section*/
+.bottom_section {
+  border-style: solid;
+  border-width: thin;
+  margin-left: 12em;
+  margin-top: -5em;
+  margin-right: 50em;
+}
+
+.img_like {
+  width: 3em;
+  height: 3em;
+}
+
+.img_comment {
+  width: 3em;
+  height: 3em;
+  margin-left: 1em;
+}
+
+.word {
+  border-style: solid;
+  border-width: thin;
+  float: right;
+  margin-left: 1em;
+}
