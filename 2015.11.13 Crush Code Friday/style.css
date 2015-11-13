@@ -1,0 +1,14 @@
+.pixel {
+  height:80px;
+  width:80px;
+  border-style:solid;
+  border-width: thin;
+  display: inline-block;
+}
+.pallette {
+  height:80px;
+  width:80px;
+  border-style:solid;
+  border-width: thin;
+  display: inline-block;
+}
