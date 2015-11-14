@@ -16,27 +16,27 @@ Synth.setSampleRate(44100);
     // piano.play('C#', 4, 2);
 
 
-    // addEventListener("keydown", function() {
-    //   piano.play('C', 4, 3);
-    // });
+    addEventListener("keydown", function() {
+      piano.play('C', 4, 3);
+    });
 
 
 
 window.addEventListener(keydown, function(){
-  if(event.keyIdentifier == "u+0043"){
+  if(event.keyIdentifier === "U+0043"){
     piano.play('C', 4, 3);
   }
-})
+});
 
 
 
-
+/*
 // C
-//   var cKey = document.getElementById('c');
-//   function cKeyClick (click) {
-//     piano.play('C', 4, 3);
-// }
-//    cKey.addEventListener('click', cKeyClick);
+  var cKey = document.getElementById('c');
+  function cKeyClick (click) {
+    piano.play('C', 4, 3);
+}
+   cKey.addEventListener('click', cKeyClick);
 
 // C Sharp
    var cSharpKey = document.getElementById('cSh');
@@ -114,3 +114,4 @@ window.addEventListener(keydown, function(){
           piano.play('B', 4, 3);
       }
          bKey.addEventListener('click', bKeyClick);
+*/
