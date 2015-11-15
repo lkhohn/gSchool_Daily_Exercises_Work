@@ -16,21 +16,98 @@ Synth.setSampleRate(44100);
     // piano.play('C#', 4, 2);
 
 
-    addEventListener("keydown", function() {
-      piano.play('C', 4, 3);
-    });
+    // addEventListener("keydown", function() {
+    //   piano.play('C', 4, 3);
+    // });
 
 
-
-window.addEventListener(keydown, function(){
+// C
+window.addEventListener('keypress', function(event){
   if(event.keyIdentifier === "U+0043"){
     piano.play('C', 4, 3);
   }
 });
 
+// C#
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// D
+window.addEventListener('keypress', function(event){
+  if(event.keyIdentifier === 'U+0044'){
+    piano.play('D', 4, 3);
+  }
+});
+
+//D#
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// E
+window.addEventListener('keypress', function(event){
+  if(event.keyIdentifier === "U+0045"){
+    piano.play('E', 4, 3);
+  }
+});
+
+// F
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// F#
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// G
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// G#
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// A
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// A#
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
+
+// B
+// window.addEventListener('keypress', function(event){
+//   if(event.keyIdentifier === ""){
+//     piano.play('C', 4, 3);
+//   }
+// });
 
 
-/*
+
+/* Clicks
 // C
   var cKey = document.getElementById('c');
   function cKeyClick (click) {
