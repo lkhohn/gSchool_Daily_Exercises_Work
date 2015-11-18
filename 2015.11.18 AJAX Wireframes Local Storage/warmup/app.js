@@ -1,3 +1,6 @@
+var wrapper = document.querySelector('div');
+wrapper.style.display = 'none';
+
 var cityInput = document.querySelector('#cityInput');
 var stateInput = document.querySelector('#stateInput');
 var button = document.querySelector('button');
@@ -46,5 +49,6 @@ button.addEventListener('click', function(event){
       console.log(textStatus);
     }
   });
+  wrapper.style.display = 'block';
 
 });
