@@ -1,11 +1,22 @@
+
 var wrapper = document.querySelector('div');
 wrapper.style.display = 'none';
 
 var cityInput = document.querySelector('#cityInput');
 var stateInput = document.querySelector('#stateInput');
 var button = document.querySelector('button');
+readSearchData(cityInput, stateInput);
+
 button.addEventListener('click', function(event){
   event.preventDefault();
+  saveSearchData(cityInput.value, stateInput.value);
+  findTravelData();
+});
+
+
+function findTravelData(){
+  saveSearchData(cityInput.value, stateInput.value);
+  var locationNode = document.querySelector('#location');
 
   // city name to zip
   $.ajax({
@@ -15,6 +26,7 @@ button.addEventListener('click', function(event){
       var allZip = JSON.stringify(data);
       var nashvilleZipObject = JSON.parse(allZip);
       nashZip = nashvilleZipObject['zip_codes'][0];
+
       // distance between zip codes
         $.ajax({
           url: 'https://www.zipcodeapi.com/rest/js-VFAEHOjaSeLAQwxQEzupdIEC1j4He1iaGSOoH7zzlk9bQH2vgwUuez7gScX7dghU/distance.json/80524/'+nashZip+'/mile',
@@ -29,6 +41,7 @@ button.addEventListener('click', function(event){
             console.log(textStatus);
           }
         });
+
       // current weather based on zip and country code
         $.ajax({
           url: 'http://api.openweathermap.org/data/2.5/weather?q='+cityInput.value+',840&APPID=d6cf401d582e33e634bca26a32b22f60',
@@ -47,8 +60,21 @@ button.addEventListener('click', function(event){
     error: function(errorObject, textStatus) {
       console.log(errorObject);
       console.log(textStatus);
-    }
-  });
-  wrapper.style.display = 'block';
-
+  }
 });
+wrapper.style.display = 'block';
+
+}
+
+function saveSearchData(cityData, stateData){
+  localStorage.setItem('city', cityData);
+  localStorage.setItem('state', stateData);
+}
+
+function readSearchData(cityInput, stateInput){
+  cityInput.value = localStorage.getItem('city');
+  stateInput.value = localStorage.getItem('state');
+  if (cityInput.value.length>0 && stateInput.value.length>0) {
+    findTravelData();
+  }
+}
