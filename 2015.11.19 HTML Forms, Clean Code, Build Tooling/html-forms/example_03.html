@@ -1,0 +1,72 @@
+<!doctype>
+<html>
+
+<head>
+  <title>HTML Forms</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Example 1</a>
+    <a href="example_02.html">Example 2</a>
+    <a href="example_03.html">Example 3</a>
+    <a href="example_04.html">Example 4</a>
+    <a href="example_05.html">Example 5</a>
+    <a href="example_06.html">Example 6</a>
+  </nav>
+  <h1>Form Fields: Example 3</h1>
+
+  <form action="" method="get">
+    <fieldset>
+      <legend>Size</legend>
+      <input type="radio" id="radio" name="radioButton" value="value">
+      <label for="radio">Small</label>
+      </input>
+      <input type="radio" id="radio" name="radioButton" value="value">
+      <label for="radio">Medium</label>
+      </input>
+      <input type="radio" id="radio" name="radioButton" value="value">
+      <label for="radio">Large</label>
+      </input>
+    </fieldset>
+    <fieldset>
+      <legend>Color</legend>
+      <input type="radio" id="radio" name="radioButton" value="value">
+      <label for="radio">Blue</label>
+      </input>
+      <input type="radio" id="radio" name="radioButton" value="value" checked>
+      <label for="radio">Red</label>
+      </input>
+      <input type="radio" id="radio" name="radioButton" value="value">
+      <label for="radio">Yellow</label>
+      </input>
+    </fieldset>
+
+    <div class="button">
+      <input type="submit" name="name" value="submit"></input>
+    </div>
+  </form>
+
+  <div class="query-params">
+    <h2>Query Params</h2>
+    <p>
+      This shows you all of the names and values that have been sent to the server. (<a href="example_03.html">clear</a>)
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>

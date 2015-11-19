@@ -1,0 +1,81 @@
+<!doctype>
+<html>
+
+<head>
+  <title>HTML Forms</title>
+  <link rel="stylesheet" href="css/app.css" />
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="js/app.js"></script>
+  <style>
+    input:focus,
+    textarea:focus {
+      /* To give a little highlight on active elements */
+      border-color: #000;
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a href="index.html">Example 1</a>
+    <a href="example_02.html">Example 2</a>
+    <a href="example_03.html">Example 3</a>
+    <a href="example_04.html">Example 4</a>
+    <a href="example_05.html">Example 5</a>
+    <a href="example_06.html">Example 6</a>
+  </nav>
+  <h1>Form Fields: Example 1</h1>
+
+  <form action="" method="get">
+    <input type="text"></input>
+    <input name="blank form" type="text" value="value"></input>
+
+    <div>
+      <label for="blank">Blank Form:</label>
+      <input name="blank form" type="blank" id="mail" />
+    </div>
+
+    <div>
+      <label for="msg">Message:</label>
+      <textarea name="message" id="msg">Lorem ipsum dolor sit amet.</textarea>
+    </div>
+
+    <label for="mail">E-mail:</label>
+    <input type="email" name="email" id="email" placeholder="email"></input>
+
+    <label for="date">Date:</label>
+    <input type="date" name="date" value="value" id="date"></input>
+
+    <label for="number">Number:</label>
+    <input type="number" name="number" value="value" id="number" placeholder="enter your number"></input>
+
+    <label for="file">File:</label>
+    <input type="file" name="file" value="value" id="file"></input>
+
+    <div class="button">
+      <input type="submit" name="name" value="submit"></input>
+    </div>
+
+  </form>
+
+
+  <div class="query-params">
+    <h2>Query Params</h2>
+    <p>
+      This shows you all of the names and values that have been sent to the server. (<a href="index.html">clear</a>)
+    </p>
+    <table>
+      <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+
+</html>
