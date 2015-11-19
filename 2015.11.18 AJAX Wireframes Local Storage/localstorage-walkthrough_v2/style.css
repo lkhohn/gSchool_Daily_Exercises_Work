@@ -1,0 +1,9 @@
+form div {
+  background: #feed99;
+  width: 400px;
+  margin-bottom: 10px;
+}
+
+form div:last-child {
+  text-align: center;
+}
