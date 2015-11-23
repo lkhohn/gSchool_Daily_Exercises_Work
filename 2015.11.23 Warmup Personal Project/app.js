@@ -3,13 +3,25 @@
 // getAverage([1,2,3]); // => 2
 
 
+//
+// function average (array) {
+//   var total = 0;
+//   for(var i = 0; i < array.length; i++) {
+//       total += array[i];
+//   }
+//   var avg = total / array.length;
+//   console.log(avg);
+// }
+// average([1,2,3]);
 
+
+var sum = 0;
 function average (array) {
-  var total = 0;
-  for(var i = 0; i < array.length; i++) {
-      total += array[i];
-  }
-  var avg = total / array.length;
-  console.log(avg);
+array.forEach(function(number){
+  sum += number;
+  // avg = sum / array.length;
+});
+avg = sum / array.length;
+console.log(avg);
 }
 average([1,2,3]);
