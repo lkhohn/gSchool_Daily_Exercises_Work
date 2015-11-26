@@ -11,7 +11,10 @@ button.addEventListener('click', function(){
       var movieData = JSON.stringify(data);
       var movieObject=JSON.parse(movieData);
         console.log(movieObject);
-      $( "#results" ).append(movieObject);
+for(var key in movieObject){
+  console.log(key);
+}
+$( "#results" ).append(movieObject);
 }
 });
 });
