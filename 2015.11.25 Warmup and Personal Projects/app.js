@@ -9,8 +9,9 @@ button.addEventListener('click', function(){
     method: "GET",
     success: function(data) {
       var movieData = JSON.stringify(data);
-      $( "#results" ).append(movieData);
-
+      var movieObject=JSON.parse(movieData);
+        console.log(movieObject);
+      $( "#results" ).append(movieObject);
 }
-})
+});
 });
