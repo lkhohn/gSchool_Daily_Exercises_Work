@@ -15,9 +15,12 @@ var linkObject = {};
 function parseQueryString(link) {
   // remove everything before the ?
   var newLink = link.split("?")[1];
+  // console.log(newLink);
   var valuePairs = newLink.split('&');
+  // console.log(valuePairs);
   for (var i = 0; i < valuePairs.length; i++) {
     var string = valuePairs[i]
+    // console.log(string);
       // take the first index and split at the =
     function splitString(string) {
       var newString = string.split('=');
