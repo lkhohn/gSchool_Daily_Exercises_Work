@@ -24,9 +24,10 @@ console.log(keyFob.press());
 
 var car = {
   engine: false,
-  keyFobPress: false,
-  open: function(){
+  open: false,
+  keyFobPress: function(){
     if(keyFob.unlockButton){
+      this.open=true;
       return 'car is unlocked';
     }
     else{
@@ -34,4 +35,11 @@ var car = {
     }
   }
 }
-console.log(car.open());
+console.log(car.keyFobPress());
+console.log(car);
+
+
+// 1) create an object
+// 2) create a second object
+// 3) have one of the objects change the state of another object
+// 4) change it so the objects have functions to change their own status
