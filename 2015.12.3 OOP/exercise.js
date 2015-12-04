@@ -19,37 +19,37 @@
 // var myName = new Name();
 // console.log(myName.getfirstName());
 
-var Name = function(inputFirstName, inputLastName) {
-  var _firstName = inputFirstName;
-  var _lastName = inputLastName;
-  return {
-    getFirstName: function() {
-      return _firstName;
-    },
-    getLastName: function() {
-      return _lastName;
-    },
-    getFullName: function() {
-      console.log('ERR: not implemented');
-    }
-  };
-};
-
-var NewName = function(inputFirstName, inputLastName) {
-  //invoke parent constructor to get interface and assign it to var input
-  var input = Name(inputFirstName, inputLastName);
-
-  //override interface property getFullName with a another function
-  input.getFullName = function() {
-    return input.getFirstName() + ' ' + input.getLastName();
-  };
-
-  //return interface
-  return input;
-}
-
-var myNewName = NewName('Lindsay', 'Hohn');
-console.log(myNewName.getFullName());
+// var Name = function(inputFirstName, inputLastName) {
+//   var _firstName = inputFirstName;
+//   var _lastName = inputLastName;
+//   return {
+//     getFirstName: function() {
+//       return _firstName;
+//     },
+//     getLastName: function() {
+//       return _lastName;
+//     },
+//     getFullName: function() {
+//       console.log('ERR: not implemented');
+//     }
+//   };
+// };
+//
+// var NewName = function(inputFirstName, inputLastName) {
+//   //invoke parent constructor to get interface and assign it to var input
+//   var input = Name(inputFirstName, inputLastName);
+//
+//   //override interface property getFullName with a another function
+//   input.getFullName = function() {
+//     return input.getFirstName() + ' ' + input.getLastName();
+//   };
+//
+//   //return interface
+//   return input;
+// }
+//
+// var myNewName = NewName('Lindsay', 'Hohn');
+// console.log(myNewName.getFullName());
 
 
 // polymorphorism
@@ -108,3 +108,39 @@ console.log(myNewName.getFullName());
 //   }
 // }
 // console.log(multiply(4,4));
+
+
+
+var Animals = function(type, color, sound, size) {
+  var _type = type;
+  var _color= color;
+  var _sound = sound;
+  var _size = size;
+  return {
+    getType: function() {
+      return _type;
+    },
+    getColor: function(){
+      return _color;
+    },
+    getSound: function() {
+        return 'this animal says ' + _sound;
+      },
+      getSize: function(){
+        return _size;
+      }
+  };
+};
+
+// var myAnimal = Animals('dog', 'yellow', 'ruff', 'medium');
+// console.log(myAnimal.getSound());
+
+var newAnimal = function(type, color, sound, size) {
+  var self = Animals(type, color, sound, size);
+  self.getSound = function() {
+    return 'this crazy ' + myAnimal.getType() + ' says ' + sound;
+  }
+  return self;
+}
+var myAnimal = newAnimal('dog', 'yellow', 'ruff', 'medium');
+console.log(myAnimal.getSound());
