@@ -1,0 +1,388 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <title>CRUSH CODE FRIDAY \../ :: Eloquent JavaScript</title>
+  <link rel=stylesheet href="js/node_modules/codemirror/lib/codemirror.css">
+  <script src="js/acorn_codemirror.js"></script>
+  <link rel=stylesheet href="css/ejs.css">
+  <script src="js/sandbox.js"></script>
+  <script src="js/ejs.js"></script>
+  <script>var sandboxLoadFiles = ["code/chapter/07_elife.js", "code/animateworld.js"];</script>
+</head>
+
+<article>
+<nav>
+  <a href="06_object.html" title="previous chapter">◀</a>
+  <a href="index.html" title="cover">◆</a>
+  <a href="08_error.html" title="next chapter">▶</a>
+</nav>
+
+<h1>CRUSH CODE FRIDAY \../</h1>
+<h3><a class=h_ident id="h_E5S+e3tAbE" href="#h_E5S+e3tAbE"></a>Learning Objectives</h3>
+<p><a class=p_ident id="p_L2pV1Fwgv7" href="#p_L2pV1Fwgv7"></a>This last week we focused on learning object oriented design.
+Let&#8217;s test ourselves for weak points and solidify our understand through practicing
+encapsulation, abstraction, inheritance and polymorphism.</p>
+<h3><a class=h_ident id="h_7Vjyl0P44U" href="#h_7Vjyl0P44U"></a>Instructions</h3>
+<h4>Overview</h4>
+<p><a class=p_ident id="p_6wzeAOKX9d" href="#p_6wzeAOKX9d"></a>Lets program a simulated world filled with different animals and plants.
+The world is visually represented by a grid of ASCII characters.
+The ever n milliseconds the world executes a turn.
+Every turn the animals and plants have an opportunity to take an action.</p>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p><a class=p_ident id="p_uHob0Ix6Cc" href="#p_uHob0Ix6Cc"></a>
+We have been provided with a lot of code, be sure to read through the code
+      provided and ensure you understand it.
+</p>
+</li>
+<li>
+<p><a class=p_ident id="p_3YNL2wX54y" href="#p_3YNL2wX54y"></a>
+We have been provided with a list of objects to implement, go through
+      implementing them one at a time and testing often.
+</p>
+</li>
+</ol></div>
+<h3><a class=h_ident id="h_r4DISfQ8NN" href="#h_r4DISfQ8NN"></a>Implement</h3>
+<h4>Entity</h4>
+<div class="sect4">
+<h5>Interface</h5>
+<p><a class=p_ident id="p_g6Sz/YlbQQ" href="#p_g6Sz/YlbQQ"></a>energy: a number to default to 0</p>
+<p><a class=p_ident id="p_SUPbrC9cff" href="#p_SUPbrC9cff"></a>direction: a string to represent direction</p>
+<p><a class=p_ident id="p_WLcVHKpowW" href="#p_WLcVHKpowW"></a>originChar: a character to represent the entity on the map</p>
+<p><a class=p_ident id="p_XnLEGIKLHu" href="#p_XnLEGIKLHu"></a>act:
+  a function that returns an action object, leave func empty in this object
+  example (type can be "reproduce", "move", "eat" or "grow"):</p>
+</div>
+<h4>Animal (child of Entity)</h4>
+<div class="sect4">
+<h5>Overides</h5>
+<p><a class=p_ident id="p_7B+kvYq1fh" href="#p_7B+kvYq1fh"></a>act: override this function so it checks for empty spaces and then moves
+in the direction of an empty space. Examine the View object to see how you
+might be able to do this.</p>
+</div>
+<h4>Plant (child of Entity)</h4>
+<div class="sect4">
+<h5>Overides</h5>
+<p><a class=p_ident id="p_/63v+Q1ubv" href="#p_/63v+Q1ubv"></a>act: override this function so it checks its energy levels, if they are high
+return a reproduce action, else return a grow action.</p>
+</div>
+<h4>Herbivore (child of Animal)</h4>
+<div class="sect4">
+<h5>Overides</h5>
+<p><a class=p_ident id="p_wyolY73PUr" href="#p_wyolY73PUr"></a>act: override this function so that if it is adjacent to a plant it eats it
+else if it has high energy it reproduces, otherwise have it move</p>
+</div>
+<h4>Carnivore (child of Animal)</h4>
+<div class="sect4">
+<h5>Overides</h5>
+<p><a class=p_ident id="p_wyolY73PUr" href="#p_wyolY73PUr"></a>act: override this function so that if it is adjacent to an Herbivore it eats it
+else if it has high energy it reproduces, otherwise have it move</p>
+</div>
+<h3><a class=h_ident id="h_j8JVcezcMY" href="#h_j8JVcezcMY"></a>Provided Code</h3>
+<pre data-language="javascript" class="snippet cm-s-default"><a class=c_ident id="c_Ztc0Fc5AXz" href="#c_Ztc0Fc5AXz"></a><span class="cm-comment">//Vectors represents position and movement in the grid</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">Vector</span>(<span class="cm-def">x</span>, <span class="cm-def">y</span>) {
+  <span class="cm-keyword">this</span>.<span class="cm-property">x</span> <span class="cm-operator">=</span> <span class="cm-variable-2">x</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">y</span> <span class="cm-operator">=</span> <span class="cm-variable-2">y</span>;
+}
+<span class="cm-variable">Vector</span>.<span class="cm-property">prototype</span>.<span class="cm-property">plus</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">other</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-keyword">this</span>.<span class="cm-property">x</span> <span class="cm-operator">+</span> <span class="cm-variable-2">other</span>.<span class="cm-property">x</span>, <span class="cm-keyword">this</span>.<span class="cm-property">y</span> <span class="cm-operator">+</span> <span class="cm-variable-2">other</span>.<span class="cm-property">y</span>);
+};
+
+<span class="cm-comment">//This is an example map</span>
+<span class="cm-comment">//It is array of characters</span>
+<span class="cm-comment">//Each character represents an entity in the world</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">mapExample</span> <span class="cm-operator">=</span> [<span class="cm-string">"############################"</span>,
+                  <span class="cm-string">"#      #    #      o      ##"</span>,
+                  <span class="cm-string">"#                          #"</span>,
+                  <span class="cm-string">"#          #####           #"</span>,
+                  <span class="cm-string">"##         #   #    ##     #"</span>,
+                  <span class="cm-string">"###           ##     #     #"</span>,
+                  <span class="cm-string">"#           ###      #     #"</span>,
+                  <span class="cm-string">"#   ####                   #"</span>,
+                  <span class="cm-string">"#   ##       o             #"</span>,
+                  <span class="cm-string">"# o  #         o       ### #"</span>,
+                  <span class="cm-string">"#    #                     #"</span>,
+                  <span class="cm-string">"############################"</span>];
+
+<span class="cm-comment">//This is the Grid constructor</span>
+<span class="cm-comment">//The Grid object is manages the map data and the contents of each space</span>
+<span class="cm-comment">//isInside: returns true if a vector is inside the map.</span>
+<span class="cm-comment">//get: gets the entity at vector</span>
+<span class="cm-comment">//set: sets the entity at vector</span>
+<span class="cm-comment">//forEach: invoke a function on each space in the grid</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">Grid</span>(<span class="cm-def">width</span>, <span class="cm-def">height</span>) {
+  <span class="cm-keyword">this</span>.<span class="cm-property">space</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Array</span>(<span class="cm-variable-2">width</span> <span class="cm-operator">*</span> <span class="cm-variable-2">height</span>);
+  <span class="cm-keyword">this</span>.<span class="cm-property">width</span> <span class="cm-operator">=</span> <span class="cm-variable-2">width</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">height</span> <span class="cm-operator">=</span> <span class="cm-variable-2">height</span>;
+}
+<span class="cm-variable">Grid</span>.<span class="cm-property">prototype</span>.<span class="cm-property">isInside</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">vector</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">x</span> <span class="cm-operator">>=</span> <span class="cm-number">0</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">x</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">width</span> <span class="cm-operator">&amp;&amp;</span>
+         <span class="cm-variable-2">vector</span>.<span class="cm-property">y</span> <span class="cm-operator">>=</span> <span class="cm-number">0</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">y</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">height</span>;
+};
+<span class="cm-variable">Grid</span>.<span class="cm-property">prototype</span>.<span class="cm-property">get</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">vector</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-keyword">this</span>.<span class="cm-property">space</span>[<span class="cm-variable-2">vector</span>.<span class="cm-property">x</span> <span class="cm-operator">+</span> <span class="cm-keyword">this</span>.<span class="cm-property">width</span> <span class="cm-operator">*</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">y</span>];
+};
+<span class="cm-variable">Grid</span>.<span class="cm-property">prototype</span>.<span class="cm-property">set</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">vector</span>, <span class="cm-def">value</span>) {
+  <span class="cm-keyword">this</span>.<span class="cm-property">space</span>[<span class="cm-variable-2">vector</span>.<span class="cm-property">x</span> <span class="cm-operator">+</span> <span class="cm-keyword">this</span>.<span class="cm-property">width</span> <span class="cm-operator">*</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">y</span>] <span class="cm-operator">=</span> <span class="cm-variable-2">value</span>;
+};
+<span class="cm-variable">Grid</span>.<span class="cm-property">prototype</span>.<span class="cm-property">forEach</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">f</span>, <span class="cm-def">context</span>) {
+  <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">y</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">y</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">height</span>; <span class="cm-variable-2">y</span><span class="cm-operator">++</span>) {
+    <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">x</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">x</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">width</span>; <span class="cm-variable-2">x</span><span class="cm-operator">++</span>) {
+      <span class="cm-keyword">var</span> <span class="cm-def">value</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">space</span>[<span class="cm-variable-2">x</span> <span class="cm-operator">+</span> <span class="cm-variable-2">y</span> <span class="cm-operator">*</span> <span class="cm-keyword">this</span>.<span class="cm-property">width</span>];
+      <span class="cm-keyword">if</span> (<span class="cm-variable-2">value</span> <span class="cm-operator">!=</span> <span class="cm-atom">null</span>)
+        <span class="cm-variable-2">f</span>.<span class="cm-property">call</span>(<span class="cm-variable-2">context</span>, <span class="cm-variable-2">value</span>, <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-variable-2">x</span>, <span class="cm-variable-2">y</span>));
+    }
+  }
+};
+
+
+<span class="cm-comment">//array of human readable directions</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">directionNames</span> <span class="cm-operator">=</span> <span class="cm-string">"n ne e se s sw w nw"</span>.<span class="cm-property">split</span>(<span class="cm-string">" "</span>);
+
+<span class="cm-comment">//a map used to convert human readable directions to vectors</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">directions</span> <span class="cm-operator">=</span> {
+  <span class="cm-string cm-property">"n"</span>:  <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>( <span class="cm-number">0</span>, <span class="cm-operator">-</span><span class="cm-number">1</span>),
+  <span class="cm-string cm-property">"ne"</span>: <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>( <span class="cm-number">1</span>, <span class="cm-operator">-</span><span class="cm-number">1</span>),
+  <span class="cm-string cm-property">"e"</span>:  <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>( <span class="cm-number">1</span>,  <span class="cm-number">0</span>),
+  <span class="cm-string cm-property">"se"</span>: <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>( <span class="cm-number">1</span>,  <span class="cm-number">1</span>),
+  <span class="cm-string cm-property">"s"</span>:  <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>( <span class="cm-number">0</span>,  <span class="cm-number">1</span>),
+  <span class="cm-string cm-property">"sw"</span>: <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-operator">-</span><span class="cm-number">1</span>,  <span class="cm-number">1</span>),
+  <span class="cm-string cm-property">"w"</span>:  <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-operator">-</span><span class="cm-number">1</span>,  <span class="cm-number">0</span>),
+  <span class="cm-string cm-property">"nw"</span>: <span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-operator">-</span><span class="cm-number">1</span>, <span class="cm-operator">-</span><span class="cm-number">1</span>)
+};
+
+<span class="cm-comment">//get random element from an array</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">randomElement</span>(<span class="cm-def">array</span>) {
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">array</span>[<span class="cm-variable">Math</span>.<span class="cm-property">floor</span>(<span class="cm-variable">Math</span>.<span class="cm-property">random</span>() <span class="cm-operator">*</span> <span class="cm-variable-2">array</span>.<span class="cm-property">length</span>)];
+}
+
+
+<span class="cm-comment">//get the element from the legend for the given character</span>
+<span class="cm-comment">//the legend is just a map of characters like '@' &amp; 'O' that gives them what</span>
+<span class="cm-comment">// Object their value is</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">elementFromChar</span>(<span class="cm-def">legend</span>, <span class="cm-def">ch</span>) {
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">ch</span> <span class="cm-operator">==</span> <span class="cm-string">" "</span> <span class="cm-operator">||</span> <span class="cm-operator">!</span><span class="cm-variable-2">ch</span>)
+    <span class="cm-keyword">return</span> <span class="cm-atom">null</span>;
+  <span class="cm-keyword">var</span> <span class="cm-def">element</span> <span class="cm-operator">=</span> <span class="cm-variable-2">legend</span>[<span class="cm-variable-2">ch</span>]();
+  <span class="cm-variable-2">element</span>.<span class="cm-property">originChar</span> <span class="cm-operator">=</span> <span class="cm-variable-2">ch</span>;
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">element</span>;
+}
+
+<span class="cm-comment">//get character from an element</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">charFromElement</span>(<span class="cm-def">element</span>) {
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">element</span> <span class="cm-operator">==</span> <span class="cm-atom">null</span>)
+    <span class="cm-keyword">return</span> <span class="cm-string">" "</span>;
+  <span class="cm-keyword">else</span>
+    <span class="cm-keyword">return</span> <span class="cm-variable-2">element</span>.<span class="cm-property">originChar</span>;
+}
+
+<span class="cm-comment">//the World object manages everything in the world</span>
+<span class="cm-comment">//toString: print human readable form of the world</span>
+<span class="cm-comment">//turn: go through every entity in the world and have the entity perform its action</span>
+<span class="cm-comment">//letAct: perform the action of the entity</span>
+<span class="cm-comment">//checkDestination: checks to see that the destination is valid in the grid</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">World</span>(<span class="cm-def">map</span>, <span class="cm-def">legend</span>) {
+
+  <span class="cm-comment">//create a grid from the given map</span>
+  <span class="cm-keyword">var</span> <span class="cm-def">grid</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Grid</span>(<span class="cm-variable-2">map</span>[<span class="cm-number">0</span>].<span class="cm-property">length</span>, <span class="cm-variable-2">map</span>.<span class="cm-property">length</span>);
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span> <span class="cm-operator">=</span> <span class="cm-variable-2">grid</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">legend</span> <span class="cm-operator">=</span> <span class="cm-variable-2">legend</span>;
+
+  <span class="cm-comment">//loop through the map and its lines</span>
+  <span class="cm-variable-2">map</span>.<span class="cm-property">forEach</span>(<span class="cm-keyword">function</span>(<span class="cm-def">line</span>, <span class="cm-def">y</span>) {
+    <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">x</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">x</span> <span class="cm-operator">&lt;</span> <span class="cm-variable-2">line</span>.<span class="cm-property">length</span>; <span class="cm-variable-2">x</span><span class="cm-operator">++</span>)
+      <span class="cm-comment">//for every space in the map, get what character</span>
+      <span class="cm-comment">//is there and look up what element it belongs to</span>
+      <span class="cm-comment">//set the element in the grid.</span>
+      <span class="cm-variable-2">grid</span>.<span class="cm-property">set</span>(<span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-variable-2">x</span>, <span class="cm-variable-2">y</span>), <span class="cm-variable">elementFromChar</span>(<span class="cm-variable-2">legend</span>, <span class="cm-variable-2">line</span>[<span class="cm-variable-2">x</span>]));
+  });
+}
+<span class="cm-variable">World</span>.<span class="cm-property">prototype</span>.<span class="cm-property">toString</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>() {
+  <span class="cm-keyword">var</span> <span class="cm-def">output</span> <span class="cm-operator">=</span> <span class="cm-string">""</span>;
+  <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">y</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">y</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">height</span>; <span class="cm-variable-2">y</span><span class="cm-operator">++</span>) {
+    <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">x</span> <span class="cm-operator">=</span> <span class="cm-number">0</span>; <span class="cm-variable-2">x</span> <span class="cm-operator">&lt;</span> <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">width</span>; <span class="cm-variable-2">x</span><span class="cm-operator">++</span>) {
+      <span class="cm-keyword">var</span> <span class="cm-def">element</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-keyword">new</span> <span class="cm-variable">Vector</span>(<span class="cm-variable-2">x</span>, <span class="cm-variable-2">y</span>));
+      <span class="cm-variable-2">output</span> <span class="cm-operator">+=</span> <span class="cm-variable">charFromElement</span>(<span class="cm-variable-2">element</span>);
+    }
+    <span class="cm-variable-2">output</span> <span class="cm-operator">+=</span> <span class="cm-string">"\n"</span>;
+  }
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">output</span>;
+};
+<span class="cm-variable">World</span>.<span class="cm-property">prototype</span>.<span class="cm-property">turn</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>() {
+  <span class="cm-keyword">var</span> <span class="cm-def">acted</span> <span class="cm-operator">=</span> [];
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">forEach</span>(<span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>) {
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">entity</span>.<span class="cm-property">act</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable-2">acted</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">entity</span>) <span class="cm-operator">==</span> <span class="cm-operator">-</span><span class="cm-number">1</span>) {
+      <span class="cm-variable-2">acted</span>.<span class="cm-property">push</span>(<span class="cm-variable-2">entity</span>);
+      <span class="cm-keyword">this</span>.<span class="cm-property">letAct</span>(<span class="cm-variable-2">entity</span>, <span class="cm-variable-2">vector</span>);
+    }
+  }, <span class="cm-keyword">this</span>);
+};
+<span class="cm-variable">World</span>.<span class="cm-property">prototype</span>.<span class="cm-property">letAct</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">action</span> <span class="cm-operator">=</span> <span class="cm-variable-2">entity</span>.<span class="cm-property">act</span>(<span class="cm-keyword">new</span> <span class="cm-variable">View</span>(<span class="cm-keyword">this</span>, <span class="cm-variable-2">vector</span>));
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">action</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-variable-2">action</span>.<span class="cm-property">type</span> <span class="cm-operator">==</span> <span class="cm-string">"move"</span>) {
+    <span class="cm-keyword">var</span> <span class="cm-def">dest</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">checkDestination</span>(<span class="cm-variable-2">action</span>, <span class="cm-variable-2">vector</span>);
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">dest</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-variable-2">dest</span>) <span class="cm-operator">==</span> <span class="cm-atom">null</span>) {
+      <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">vector</span>, <span class="cm-atom">null</span>);
+      <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">dest</span>, <span class="cm-variable-2">entity</span>);
+    }
+  }
+};
+<span class="cm-variable">World</span>.<span class="cm-property">prototype</span>.<span class="cm-property">checkDestination</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">action</span>, <span class="cm-def">vector</span>) {
+  <span class="cm-keyword">if</span> (<span class="cm-variable">directions</span>.<span class="cm-property">hasOwnProperty</span>(<span class="cm-variable-2">action</span>.<span class="cm-property">direction</span>)) {
+    <span class="cm-keyword">var</span> <span class="cm-def">dest</span> <span class="cm-operator">=</span> <span class="cm-variable-2">vector</span>.<span class="cm-property">plus</span>(<span class="cm-variable">directions</span>[<span class="cm-variable-2">action</span>.<span class="cm-property">direction</span>]);
+    <span class="cm-keyword">if</span> (<span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">isInside</span>(<span class="cm-variable-2">dest</span>))
+      <span class="cm-keyword">return</span> <span class="cm-variable-2">dest</span>;
+  }
+};
+
+<span class="cm-comment">//The view object is what we can use to look around the world programatically.</span>
+<span class="cm-comment">//look: check to see what entity is in a given direction</span>
+<span class="cm-comment">//findAll: look in every direction!</span>
+<span class="cm-comment">//find: returns a random element returned from findAll</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">View</span>(<span class="cm-def">world</span>, <span class="cm-def">vector</span>) {
+  <span class="cm-keyword">this</span>.<span class="cm-property">world</span> <span class="cm-operator">=</span> <span class="cm-variable-2">world</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">vector</span> <span class="cm-operator">=</span> <span class="cm-variable-2">vector</span>;
+}
+<span class="cm-variable">View</span>.<span class="cm-property">prototype</span>.<span class="cm-property">look</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">dir</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">target</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">vector</span>.<span class="cm-property">plus</span>(<span class="cm-variable">directions</span>[<span class="cm-variable-2">dir</span>]);
+  <span class="cm-keyword">if</span> (<span class="cm-keyword">this</span>.<span class="cm-property">world</span>.<span class="cm-property">grid</span>.<span class="cm-property">isInside</span>(<span class="cm-variable-2">target</span>))
+    <span class="cm-keyword">return</span> <span class="cm-variable">charFromElement</span>(<span class="cm-keyword">this</span>.<span class="cm-property">world</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-variable-2">target</span>));
+  <span class="cm-keyword">else</span>
+    <span class="cm-keyword">return</span> <span class="cm-string">"#"</span>;
+};
+<span class="cm-variable">View</span>.<span class="cm-property">prototype</span>.<span class="cm-property">findAll</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">ch</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">found</span> <span class="cm-operator">=</span> [];
+  <span class="cm-keyword">for</span> (<span class="cm-keyword">var</span> <span class="cm-def">dir</span> <span class="cm-keyword">in</span> <span class="cm-variable">directions</span>)
+    <span class="cm-keyword">if</span> (<span class="cm-keyword">this</span>.<span class="cm-property">look</span>(<span class="cm-variable-2">dir</span>) <span class="cm-operator">==</span> <span class="cm-variable-2">ch</span>)
+      <span class="cm-variable-2">found</span>.<span class="cm-property">push</span>(<span class="cm-variable-2">dir</span>);
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">found</span>;
+};
+<span class="cm-variable">View</span>.<span class="cm-property">prototype</span>.<span class="cm-property">find</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">ch</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">found</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">findAll</span>(<span class="cm-variable-2">ch</span>);
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">found</span>.<span class="cm-property">length</span> <span class="cm-operator">==</span> <span class="cm-number">0</span>) <span class="cm-keyword">return</span> <span class="cm-atom">null</span>;
+  <span class="cm-keyword">return</span> <span class="cm-variable">randomElement</span>(<span class="cm-variable-2">found</span>);
+};
+
+<span class="cm-comment">//returns a direction with n offset</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">dirPlus</span>(<span class="cm-def">dir</span>, <span class="cm-def">n</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">index</span> <span class="cm-operator">=</span> <span class="cm-variable">directionNames</span>.<span class="cm-property">indexOf</span>(<span class="cm-variable-2">dir</span>);
+  <span class="cm-keyword">return</span> <span class="cm-variable">directionNames</span>[(<span class="cm-variable-2">index</span> <span class="cm-operator">+</span> <span class="cm-variable-2">n</span> <span class="cm-operator">+</span> <span class="cm-number">8</span>) <span class="cm-operator">%</span> <span class="cm-number">8</span>];
+}
+
+
+<span class="cm-comment">//This defines a list of actions that an animal or plant can do</span>
+<span class="cm-comment">//grow: increase entities energy</span>
+<span class="cm-comment">//move: decrease entities energy and move it into target direction</span>
+<span class="cm-comment">//eat: eat the entity at target location and gain its energy</span>
+<span class="cm-comment">//reproduce: create another entity of the same type and give it energy</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">actionTypes</span> <span class="cm-operator">=</span> <span class="cm-variable">Object</span>.<span class="cm-property">create</span>(<span class="cm-atom">null</span>);
+<span class="cm-variable">actionTypes</span>.<span class="cm-property">grow</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>) {
+  <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">+=</span> <span class="cm-number">0.5</span>;
+  <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
+};
+<span class="cm-variable">actionTypes</span>.<span class="cm-property">move</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>, <span class="cm-def">action</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">dest</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">checkDestination</span>(<span class="cm-variable-2">action</span>, <span class="cm-variable-2">vector</span>);
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">dest</span> <span class="cm-operator">==</span> <span class="cm-atom">null</span> <span class="cm-operator">||</span>
+      <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">1</span> <span class="cm-operator">||</span>
+      <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-variable-2">dest</span>) <span class="cm-operator">!=</span> <span class="cm-atom">null</span>)
+    <span class="cm-keyword">return</span> <span class="cm-atom">false</span>;
+  <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">-=</span> <span class="cm-number">1</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">vector</span>, <span class="cm-atom">null</span>);
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">dest</span>, <span class="cm-variable-2">entity</span>);
+  <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
+};
+<span class="cm-variable">actionTypes</span>.<span class="cm-property">eat</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>, <span class="cm-def">action</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">dest</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">checkDestination</span>(<span class="cm-variable-2">action</span>, <span class="cm-variable-2">vector</span>);
+  <span class="cm-keyword">var</span> <span class="cm-def">atDest</span> <span class="cm-operator">=</span> <span class="cm-variable-2">dest</span> <span class="cm-operator">!=</span> <span class="cm-atom">null</span> <span class="cm-operator">&amp;&amp;</span> <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-variable-2">dest</span>);
+  <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">atDest</span> <span class="cm-operator">||</span> <span class="cm-variable-2">atDest</span>.<span class="cm-property">energy</span> <span class="cm-operator">==</span> <span class="cm-atom">null</span>)
+    <span class="cm-keyword">return</span> <span class="cm-atom">false</span>;
+  <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">+=</span> <span class="cm-variable-2">atDest</span>.<span class="cm-property">energy</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">dest</span>, <span class="cm-atom">null</span>);
+  <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
+};
+<span class="cm-variable">actionTypes</span>.<span class="cm-property">reproduce</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>, <span class="cm-def">action</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">baby</span> <span class="cm-operator">=</span> <span class="cm-variable">elementFromChar</span>(<span class="cm-keyword">this</span>.<span class="cm-property">legend</span>,
+                             <span class="cm-variable-2">entity</span>.<span class="cm-property">originChar</span>);
+  <span class="cm-keyword">var</span> <span class="cm-def">dest</span> <span class="cm-operator">=</span> <span class="cm-keyword">this</span>.<span class="cm-property">checkDestination</span>(<span class="cm-variable-2">action</span>, <span class="cm-variable-2">vector</span>);
+  <span class="cm-keyword">if</span> (<span class="cm-variable-2">dest</span> <span class="cm-operator">==</span> <span class="cm-atom">null</span> <span class="cm-operator">||</span>
+      <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">2</span> <span class="cm-operator">*</span> <span class="cm-variable-2">baby</span>.<span class="cm-property">energy</span> <span class="cm-operator">||</span>
+      <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">get</span>(<span class="cm-variable-2">dest</span>) <span class="cm-operator">!=</span> <span class="cm-atom">null</span>)
+    <span class="cm-keyword">return</span> <span class="cm-atom">false</span>;
+  <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">-=</span> <span class="cm-number">2</span> <span class="cm-operator">*</span> <span class="cm-variable-2">baby</span>.<span class="cm-property">energy</span>;
+  <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">dest</span>, <span class="cm-variable-2">baby</span>);
+  <span class="cm-keyword">return</span> <span class="cm-atom">true</span>;
+};
+
+<span class="cm-comment">//LifelikeWorld is a child of World</span>
+<span class="cm-comment">//It works the same way but overrides the letAct function</span>
+<span class="cm-comment">//It allows for animals and plants to do more advanced actions</span>
+<span class="cm-comment">//It also manages the energy of animals and plants</span>
+<span class="cm-comment">//If they run out of energy they die</span>
+<span class="cm-comment">//If they eat or grow they gain energy</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">LifelikeWorld</span>(<span class="cm-def">map</span>, <span class="cm-def">legend</span>) {
+  <span class="cm-variable">World</span>.<span class="cm-property">call</span>(<span class="cm-keyword">this</span>, <span class="cm-variable-2">map</span>, <span class="cm-variable-2">legend</span>);
+}
+<span class="cm-variable">LifelikeWorld</span>.<span class="cm-property">prototype</span> <span class="cm-operator">=</span> <span class="cm-variable">Object</span>.<span class="cm-property">create</span>(<span class="cm-variable">World</span>.<span class="cm-property">prototype</span>);
+<span class="cm-variable">LifelikeWorld</span>.<span class="cm-property">prototype</span>.<span class="cm-property">letAct</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(<span class="cm-def">entity</span>, <span class="cm-def">vector</span>) {
+  <span class="cm-keyword">var</span> <span class="cm-def">action</span> <span class="cm-operator">=</span> <span class="cm-variable-2">entity</span>.<span class="cm-property">act</span>(<span class="cm-keyword">new</span> <span class="cm-variable">View</span>(<span class="cm-keyword">this</span>, <span class="cm-variable-2">vector</span>));
+  <span class="cm-keyword">var</span> <span class="cm-def">handled</span> <span class="cm-operator">=</span> <span class="cm-variable-2">action</span> <span class="cm-operator">&amp;&amp;</span>
+    <span class="cm-variable-2">action</span>.<span class="cm-property">type</span> <span class="cm-keyword">in</span> <span class="cm-variable">actionTypes</span> <span class="cm-operator">&amp;&amp;</span>
+    <span class="cm-variable">actionTypes</span>[<span class="cm-variable-2">action</span>.<span class="cm-property">type</span>].<span class="cm-property">call</span>(<span class="cm-keyword">this</span>, <span class="cm-variable-2">entity</span>,
+                                  <span class="cm-variable-2">vector</span>, <span class="cm-variable-2">action</span>);
+  <span class="cm-keyword">if</span> (<span class="cm-operator">!</span><span class="cm-variable-2">handled</span>) {
+    <span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">-=</span> <span class="cm-number">0.2</span>;
+    <span class="cm-keyword">if</span> (<span class="cm-variable-2">entity</span>.<span class="cm-property">energy</span> <span class="cm-operator">&lt;=</span> <span class="cm-number">0</span>)
+      <span class="cm-keyword">this</span>.<span class="cm-property">grid</span>.<span class="cm-property">set</span>(<span class="cm-variable-2">vector</span>, <span class="cm-atom">null</span>);
+  }
+};</pre>
+<h3><a class=h_ident id="h_wUkYqXAFbH" href="#h_wUkYqXAFbH"></a>YOUR CODE</h3>
+<pre data-language="javascript" class="snippet cm-s-default"><a class=c_ident id="c_FcpjZozzEq" href="#c_FcpjZozzEq"></a><span class="cm-comment">//Entity this is the parent class</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">Entity</span>(){
+  <span class="cm-keyword">return</span> {
+  };
+}
+
+<span class="cm-comment">//The wall element inherits from Entity</span>
+<span class="cm-keyword">function</span> <span class="cm-variable">Wall</span>() {
+  <span class="cm-keyword">var</span> <span class="cm-def">self</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">Entity</span>();
+  <span class="cm-comment">//override act</span>
+  <span class="cm-variable-2">self</span>.<span class="cm-property">act</span><span class="cm-operator">=</span><span class="cm-atom">false</span>;
+  <span class="cm-variable-2">self</span>.<span class="cm-property">act</span> <span class="cm-operator">=</span> <span class="cm-keyword">function</span>(){
+    <span class="cm-comment">//do nothing</span>
+  };
+  <span class="cm-keyword">return</span> <span class="cm-variable-2">self</span>;
+}
+<span class="cm-comment">// Your code here</span>
+
+
+<span class="cm-comment">//uncomment entities from the legend as you implement them</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">legend</span> <span class="cm-operator">=</span> {
+  <span class="cm-string cm-property">"#"</span>: <span class="cm-variable">Wall</span>,
+  <span class="cm-string cm-property">"O"</span>: <span class="cm-variable">Entity</span>
+  <span class="cm-comment">//"*": Plant</span>
+};
+
+<span class="cm-comment">//to add an entity to the map replace an empty character with your entitycharacter</span>
+<span class="cm-keyword">var</span> <span class="cm-variable">map</span> <span class="cm-operator">=</span>
+[<span class="cm-string">"############################"</span>,
+ <span class="cm-string">"#####                 ######"</span>,
+ <span class="cm-string">"##                        ##"</span>,
+ <span class="cm-string">"#    ##                   ##"</span>,
+ <span class="cm-string">"#                 ##       #"</span>,
+ <span class="cm-string">"#                 ##       #"</span>,
+ <span class="cm-string">"#                 ##       #"</span>,
+ <span class="cm-string">"#           #              #"</span>,
+ <span class="cm-string">"#           #              #"</span>,
+ <span class="cm-string">"#           ##             #"</span>,
+ <span class="cm-string">"##         ###           ###"</span>,
+ <span class="cm-string">"############################"</span>];
+<span class="cm-keyword">var</span> <span class="cm-variable">world</span> <span class="cm-operator">=</span> <span class="cm-keyword">new</span> <span class="cm-variable">LifelikeWorld</span>(<span class="cm-variable">map</span>, <span class="cm-variable">legend</span>);
+
+<span class="cm-comment">//Megaman EXECUTE! \o/</span>
+<span class="cm-variable">animateWorld</span>(<span class="cm-variable">world</span>);</pre>
+<nav>
+  <a href="06_object.html" title="previous chapter">◀</a>
+  <a href="index.html" title="cover">◆</a>
+  <a href="08_error.html" title="next chapter">▶</a>
+</nav>
+</article>
