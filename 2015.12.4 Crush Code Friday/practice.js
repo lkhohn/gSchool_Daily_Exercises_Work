@@ -70,21 +70,24 @@ function Entity() {
   };
 }
 
-function Animal() {
+function Herbivore() {
   var self = new Entity();
-  self.originChar = 'A';
-  self.direction = 's';
-  self.energy = 10;
+  self.originChar = 'H';
+  self.direction = 'se';
+  self.energy = 50;
   self.act = function(view) {
     var returnObject;
-    var food = view.find('');
+    var food = view.find('P');
     var emptySpace = view.find(' ');
-    var otherAnimal = view.find('A');
+    var otherAnimal = view.find('H');
     var predator = view.find('C');
     if (predator) {
-
-    };
-    else if (food) {
+      self.direction = emptySpace;
+      returnObject = {
+        type: 'move',
+        direction: this.direction
+      };
+    } else if (food) {
       returnObject = {
         type: 'eat',
         direction: food
@@ -110,7 +113,7 @@ function Plant() {
   var self = new Entity();
   self.originChar = 'P';
   delete self.direction;
-  self.energy = 10;
+  self.energy = 5;
   self.act = function(view) {
     // grow is the default action
     var returnAction = {
@@ -139,10 +142,10 @@ function Carnivore() {
   var self = new Entity();
   self.originChar = 'C';
   self.direction = 's';
-  self.energy = 10;
+  self.energy = 50;
   self.act = function(view) {
     var returnObject;
-    var food = view.find('A');
+    var food = view.find('H');
     var emptySpace = view.find(' ');
     var otherAnimal = view.find('C');
     if (food) {
@@ -166,11 +169,12 @@ function Carnivore() {
   };
   return self;
 }
+
 function Tree() {
   var self = new Entity();
   self.originChar = 'T';
   delete self.direction;
-  self.energy = 10;
+  self.energy = 5;
   self.act = function(view) {
     // grow is the default action
     var returnAction = {
@@ -194,7 +198,44 @@ function Tree() {
   // return our new entity plant
   return self;
 }
-
+function Giraffe() {
+  var self = new Entity();
+  self.originChar = 'G';
+  self.direction = 'ne';
+  self.energy = 50;
+  self.act = function(view) {
+    var returnObject;
+    var food = view.find('T');
+    var emptySpace = view.find(' ');
+    var otherAnimal = view.find('G');
+    var predator = view.find('C');
+    if (predator) {
+      self.direction = emptySpace;
+      returnObject = {
+        type: 'move',
+        direction: this.direction
+      };
+    } else if (food) {
+      returnObject = {
+        type: 'eat',
+        direction: food
+      };
+    } else if (emptySpace && otherAnimal && self.energy >= 100) {
+      returnObject = {
+        type: 'reproduce',
+        direction: emptySpace
+      };
+    } else if (emptySpace) {
+      self.direction = emptySpace;
+      returnObject = {
+        type: 'move',
+        direction: this.direction
+      };
+    }
+    return returnObject;
+  };
+  return self;
+}
 
 //The wall element inherits from Entity
 function Wall() {
@@ -210,22 +251,23 @@ function Wall() {
 var legend = {
   "#": Wall,
   "E": Entity,
-  "A": Animal,
+  "H": Herbivore,
   "P": Plant,
   "C": Carnivore,
-  "T": Tree
+  "T": Tree,
+  "G": Giraffe
 };
 
 //to add an entity to the map replace an empty character with your entitycharacter
 var map = ["############################",
-  "#####      AP       P ######",
-  "##   C  P    P   P        ##",
-  "#    ##     A  P          ##",
-  "#     P  P    P   ##  P    #",
-  "#  P   A   P  P   ##   P   #",
-  "#     P  P     P  ##  C    #",
-  "#  C        #   P        P #",
-  "#  P  A   P #   C  P   A   #",
+  "#####      HP       P ######",
+  "##   C  P    GT  P        ##",
+  "#    ##   T H             ##",
+  "#     P  T  G P   ##  P    #",
+  "#  P   H   T      ##   P   #",
+  "#     P        P  ##  C    #",
+  "#  C        #   P   T    P #",
+  "#  P  H    T#   C  P   H   #",
   "#           ##      P      #",
   "##    P    ###   P       ###",
   "############################"
