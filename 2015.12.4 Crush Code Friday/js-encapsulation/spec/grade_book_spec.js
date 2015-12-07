@@ -1,14 +1,14 @@
 var GradeBook = require('../grade_book');
 var Student = require('../student');
 
-xdescribe('getStudents', function() {
+describe('getStudents', function() {
   it('returns all students in the GradeBook', function() {
     var gradeBook = new GradeBook();
     expect(gradeBook.getStudents()).toEqual({});
   });
 });
 
-xdescribe('addStudent', function() {
+describe('addStudent', function() {
   it('adds a student to the gradebook with no scores entered', function() {
     var student = new Student('Best', 'Student');
     var gradeBook = new GradeBook();
@@ -18,7 +18,7 @@ xdescribe('addStudent', function() {
   });
 });
 
-xdescribe('getScoresForStudent', function() {
+describe('getScoresForStudent', function() {
   it('returns the set of scores for a given student', function() {
     var student = new Student('Best', 'Student');
     var gradeBook = new GradeBook();
@@ -34,7 +34,7 @@ xdescribe('getScoresForStudent', function() {
   });
 });
 
-xdescribe('addScoreForStudent', function() {
+describe('addScoreForStudent', function() {
   it('returns true when the student could be found and the score is added', function() {
     var student = new Student('Best', 'Student');
     var gradeBook = new GradeBook();

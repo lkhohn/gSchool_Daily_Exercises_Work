@@ -25,7 +25,7 @@ describe('modification by outside entities', function() {
   it('does not allow modification of the firstName', function() {
     var awesomeStudent = new Student('Awesome', 'Student');
     awesomeStudent.firstName = 'foobar';
-    expect(awesomeStudent.getFirstName()).toEqual('Awesome')
+    expect(awesomeStudent.getFirstName()).toEqual('Awesome');
   });
 
   it('does not allow modification of the lastName', function() {
