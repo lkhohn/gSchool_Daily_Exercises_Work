@@ -1,9 +1,8 @@
 function GradeBook() {
   return{
-  getFirstName: 'Awesome',
-  getLastName: 'Student'
+  getFirstName: 'Awesome'
 };
-} 
+}
 
 // DO NOT MODIFY BELOW THIS COMMENT:
 module.exports = GradeBook;

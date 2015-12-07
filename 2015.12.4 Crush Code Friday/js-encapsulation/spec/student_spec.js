@@ -7,21 +7,21 @@ describe('#getFirstName', function() {
   });
 });
 
-xdescribe('#getLastName', function() {
+describe('#getLastName', function() {
   it('returns the lastName of the student', function() {
     var awesomeStudent = new Student('Awesome', 'Student');
     expect(awesomeStudent.getLastName()).toEqual('Student');
   });
 });
 
-xdescribe('#fullName', function() {
+describe('#fullName', function() {
   it('returns the first and last name of the student separated by a space', function() {
     var awesomeStudent = new Student('Awesome', 'Student');
     expect(awesomeStudent.fullName()).toEqual('Awesome Student');
   });
 });
 
-xdescribe('modification by outside entities', function() {
+describe('modification by outside entities', function() {
   it('does not allow modification of the firstName', function() {
     var awesomeStudent = new Student('Awesome', 'Student');
     awesomeStudent.firstName = 'foobar';
