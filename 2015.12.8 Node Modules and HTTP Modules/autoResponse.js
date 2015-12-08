@@ -1,30 +1,38 @@
 //Write your Constructor Function that will generate a different response for each day of the week
-module.exports = {
-  dayOfWeek: function(currentDay) {
+
+var AutoResponse = function() {
+  var dayOfWeek = function(currentDay) {
     switch (currentDay) {
       case 'Monday':
-        console.log('Today is Monday');
+        return 'Today is Monday';
         break;
       case 'Tuesday':
-        console.log('Today is Tuesday');
+        return 'Today is Tuesday';
         break;
       case 'Wednesday':
-        console.log('Today is Wednesday');
+        return 'Today is Wednesday';
         break;
       case 'Thursday':
-        console.log('Today is Thursday');
+        return 'Today is Thursday';
         break;
       case 'Friday':
-        console.log('Today is Friday');
+        return 'Today is Friday';
         break;
       case 'Saturday':
-        console.log('Today is Saturday');
+        return 'Today is Saturday';
         break;
       case 'Sunday':
-        console.log('Today is Sunday');
+        return 'Today is Sunday';
         break;
       default:
-        console.log('Unknown date');
+        return 'Unknown date';
     }
-  }
+  };
+
+  return {
+    getResponse: function(currentDay) {
+      return dayOfWeek(currentDay);
+    }
+  };
 };
+module.exports = AutoResponse();
