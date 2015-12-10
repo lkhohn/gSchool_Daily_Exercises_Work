@@ -1,0 +1,15 @@
+{
+  "name": "part-two",
+  "version": "1.0.0",
+  "description": "Today we will write our first API and make a call to it.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "monk": "^1.0.1"
+  }
+}

@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 // implement the jQuery ajax call here and console log the data
 
@@ -25,10 +25,39 @@
 //     console.log(textStatus);
 //   }
 // });
-$.ajax({
-  url: 'http://localhost:8000/api',
-  json: 'callback',
-  dataType: 'JSON'
-}).done(function main(data){
-    console.log(data);
-  });
+// $.ajax({
+//   url: 'http://localhost:8000/api',
+//   json: 'callback',
+//   dataType: 'JSON'
+// }).done(function main(data){
+//     console.log(data);
+//   });
+
+
+// function getData() {
+//   $.get("http://localhost:8000/api", function(data) {
+//     // alert('Data loaded:' + data);
+//     console.log(data);
+//   });
+// }
+//
+// getData();
+
+
+
+  // part II solution
+  'use strict';
+
+  function getData() {
+    $.get("http://localhost:8000/api/get", function(data) {
+      console.log(data);
+    });
+  }
+
+  function createData() {
+    $.get("http://localhost:8000/api/create", function(data) {
+      console.log(data);
+    });
+  }
+
+  createData();
