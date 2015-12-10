@@ -69,28 +69,32 @@
 var fs = require('fs');
 var http = require('http');
 
-var db = require('monk');
-var locations = db.get('locations');
-
 
 //TODO include monk
 //TODO get db instance (or you could do both in one line)
+var Monk = require('monk');
+var db = Monk('localhost/locations');
+
+
 //NOTE: ensure the mongod daemon is running
+
+
 //TODO get collection, might have to use mongo shell to create collection
+var cityState = db.get('cityState');
 
 
 // create a server using http
 var server = http.createServer(handleRequest);
 // start the server on port 8000
 server.listen(8000, function() {
-	console.log("Server is running on 8000");
+  console.log("Server is running on 8000");
 });
 
 
 function handleRequest(req, res) {
 
-	//TODO add route for `api/get`
-	//TODO add route for `api/create`
+  //TODO add route for `api/get`
+  //TODO add route for `api/create`
   if (req.url === '/' || req.url === '/index.html') {
 
     res.setHeader("Content-Type", "text/html");
@@ -101,13 +105,24 @@ function handleRequest(req, res) {
     res.setHeader("Content-Type", "text/javascript");
     fetchFile(req, res, './app.js');
 
-  } else if(req.url === '/api/get'){
-    res.setHeader("Content-Type", "text/json");
-    fetchFile(req, res, locations);
+  } else if (req.url === '/api/get') {
+    locations.find({}, function(err, data) {
+      var doc = JSON.stringify(data);
+      res.write(doc);
+      res.end();
+    });
 
-  }
+  } else if (req.url === '/api/create') {
+    locations.insert({
+        Ohio: 'Columbus'
+      },
+      function(err, doc) {
+        res.statusCode = 200;
+        res.write(JSON.stringify(doc));
+        res.end();
+      });
 
-  else {
+  } else {
     respondError(req, res);
   }
 }
@@ -115,25 +130,15 @@ function handleRequest(req, res) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-function fetchFile(req, res, filename){
+function fetchFile(req, res, filename) {
   //read a file asynchronously using fs. Once the file has been read fs will
   //invoke the callback function passing in an error or data.
-  fs.readFile(filename, function(err, data){
+  fs.readFile(filename, function(err, data) {
     handleFileLoad(req, res, err, data);
   });
 }
 
-function handleFileLoad(req, res, err, data){
+function handleFileLoad(req, res, err, data) {
   if (err) { //if an error exists
     respondError(req, res);
   } else { // else we successfully loaded the file
