@@ -17,6 +17,7 @@ server.listen(8000, function() {
   console.log("Server is running on 8000");
 });
 // make a function inside of this function
+// before calling the get StudentInfo function
 
 function handleRequest(req, res) {
   var urlObj = function getStudentInfo(req, res) {
