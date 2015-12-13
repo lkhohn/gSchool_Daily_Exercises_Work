@@ -16,7 +16,7 @@ var server = http.createServer(handleRequest);
 server.listen(8000, function() {
   console.log("Server is running on 8000");
 });
-
+// make a function inside of this function
 
 function handleRequest(req, res) {
   var urlObj = function getStudentInfo(req, res) {
