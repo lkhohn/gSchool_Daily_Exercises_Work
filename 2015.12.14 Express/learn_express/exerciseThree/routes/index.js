@@ -11,17 +11,18 @@ router.get('/', function(req, res, next) {
   });
 });
 
-
-
 router.post('/', function(req, res, next) {
   // console.log(req.body.textarea);
   var input = req.body.textarea;
   var words = input.split(" ");
-  console.log(words);
+  // console.log(words);
   for (var i = 0; i < words.length; i++) {
+    var hipstafyWord = snippets[Math.floor(Math.random() * words.length)];
+    // console.log(hipstafyWord);
+    var hipstafySentence = words[i] + ' ' + hipstafyWord;
+    console.log(hipstafySentence);
   }
 });
-
 
 
 module.exports = router;
