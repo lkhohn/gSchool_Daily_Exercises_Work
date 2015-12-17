@@ -1,16 +1,19 @@
 var express = require('express');
-var router = express.Router();
-// var app = express();
-var path = require('path');
+var app = express();
+var path = require('path')
 var low = require('lowdb');
 var db = low('db.json');
+var pgp = require('pg-promise');
+var db = pgp("postgres://username:password@host:port/database");
 
-router.set('view engine', 'jade');
+
+
+
+app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
-router.get('/', function(req, res){
-  res.render('index', { title: "Puppies"});
+app.get('/', function(req, res){
+  res.render('index', { title: "Puppies"})
 });
 
-router.listen(3000);
-module.exports = router;
+app.listen(3000);
