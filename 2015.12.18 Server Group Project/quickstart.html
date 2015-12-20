@@ -1,0 +1,31 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+  <div id="authorize-div" style="display: none">
+    <span>Authorize access to Google Calendar API</span>
+    <!--Button for the user to click to initiate auth sequence -->
+    <button id="authorize-button" onclick="handleAuthClick(event)">
+      Authorize
+    </button>
+  </div>
+  <pre id="output"></pre>
+
+  <button id="btnCreateEvents" class="btn btn-primary" onclick="makeApiCall();">Create Events</button>
+
+  <div id="divifm">
+    <iframe id="ifmCalendar" src="https://www.google.com/calendar/embed?
+                        height=550&amp;wkst=1&amp;bgcolor=%23FFFFFF&
+                        amp;src=24tn4fht2sssdssfdiqqlsedk%40group.calendar.google.com&
+                        amp;color=%238C500B&amp;ctz=Asia%2FCalcutta" style="border-width: 0" width="950" height="520" frameborder="0" scrolling="no">
+    </iframe>
+  </div>
+
+  <script type="text/javascript" src='quickstart.js'></script>
+  <script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+</body>
+
+</html>
