@@ -37,7 +37,7 @@ function findTravelData() {
   }).then(function(weather) {
     var weatherNode = document.querySelector('#weather');
     weatherNode.innerHTML = convertKelvinToFahrenheit(weather.main.temp) + ' degrees Fahrenheit';
-
+n
     distanceNode.innerHTML = distance;
     locationNode.innerHTML = cityInput.value + ', ' + stateInput.value;
 
