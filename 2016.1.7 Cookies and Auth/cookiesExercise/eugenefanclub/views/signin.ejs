@@ -1,0 +1,15 @@
+<%- include _header.ejs %>
+
+
+    <form method="post" action="/auth/signin">
+    <ul>
+    	<li><h3>Username: </h3><input type="text" name="username" value="<%= data.username %>"</li>
+    	<li><h3>Password: </h3><input type="password" name="password" value="" ></li>
+    	<li><button type="submit">Submit</button></li>
+    </ul>
+    </form>
+  <div class="errorMsg"><h3><%= error %></h3></div> 
+
+
+
+<%- include _footer.ejs %>

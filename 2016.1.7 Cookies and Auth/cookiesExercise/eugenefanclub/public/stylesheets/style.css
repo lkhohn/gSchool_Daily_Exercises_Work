@@ -1,0 +1,59 @@
+/*
+	STYLE.CSS
+*/
+
+html {
+	margin: 0;
+	padding: 0;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+header {
+}
+footer {
+	background-color: #000;
+	color: #fff;
+	text-shadow: 1px 1px 3px #444;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+ul {
+
+}
+ul li {
+	list-style: none;
+
+}
+ul li h3 {
+	text-align: right;
+	display: inline-block;
+	width: 200px;
+	height: 50px;
+	font-size: 20px;
+	padding-right: 20px;
+	text-shadow: 1px 1px 1px #000;
+	margin: 0;
+}
+nav ul li{
+	display: inline-block;
+}
+
+input {
+	width: 300px;
+	height: 40px;
+	font-size: 20px;
+	box-shadow: 1px 1px 8px 1px #000 inset;
+	padding-left: 20px;
+}
+button {
+	width: 75px;
+	height: 40px;
+	font-size: 20px;
+  padding: 10px;
+}
