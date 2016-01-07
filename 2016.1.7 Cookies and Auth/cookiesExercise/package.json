@@ -1,0 +1,16 @@
+{
+  "name": "cookiesexercise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.0",
+    "cookie-session": "^2.0.0-alpha.1",
+    "express": "^4.13.3"
+  }
+}

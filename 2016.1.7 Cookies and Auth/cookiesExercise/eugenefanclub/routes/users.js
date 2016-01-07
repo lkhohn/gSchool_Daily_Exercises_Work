@@ -6,7 +6,7 @@ var knex = require('knex')({
   connection: {
     host     : '127.0.0.1',
     port     : 5432,
-    user     : 'lindsayhohn',
+    user     : 'jroel',
     database : 'eugenefanclub'
   }
 });
@@ -16,7 +16,7 @@ var knex = require('knex')({
 router.get('/signup', function(req, res, next) {
 	var errors = [];//create empty array to prevent errors
 	var data = {};//create empty object to prevent errors
-
+	
 	res.render('signup', {
 		title: 'Sign Up!',
 		data: data,
@@ -27,7 +27,7 @@ router.get('/signup', function(req, res, next) {
 
 
 router.post('/signup', function(req, res, next) {
-
+	
 	//get our post fields
 	console.log("in signup post")
   	var username = req.body.username;
@@ -39,7 +39,7 @@ router.post('/signup', function(req, res, next) {
   	var passwordcheck = req.body.passwordcheck;
 
 
-
+  	
   	//VALIDATION====================================
   	var errorMsg = []; //setup var for containing various error messages
   	//Validate password length
@@ -52,7 +52,7 @@ router.post('/signup', function(req, res, next) {
 	if(email.indexOf('@') < 0){
 		errorMsg.push('Not a valid email.');
 	}
-
+ 
 	//Validate phone number
 	if(phone.indexOf(/a-zA-Z/) > 0)
 	{
@@ -77,22 +77,22 @@ router.post('/signup', function(req, res, next) {
 		errorMsg.push('Need a last name.');
 	}
   	//console.log("Errors: ", errorMsg);//Testing
-
+  	
   	if (errorMsg.length)
   	{
   		console.log('Errors found going back to signup');
-	  		res.render('signup', {
-	  			title: "Sign Up to Eugene's Fan Site",
-	  			data: req.body,
-	  			errors: errorMsg
+	  		res.render('signup', { 
+	  			title: "Sign Up to Eugene's Fan Site", 
+	  			data: req.body, 
+	  			errors: errorMsg 
 	  		});
 	} else {
 		//--SUCCESS--
 
 		//Hash password
 		bcrypt.genSalt(10, function(err, salt) {
-	        bcrypt.hash(password, salt, function(err, hash) {
-
+	        bcrypt.hash(password, salt, function(err, hash) {          
+	           
 				//Insert into our database
 				knex('users').insert({
 						username: username,
@@ -122,12 +122,12 @@ router.get('/update', function(req,res,next){
 
 
 		knex('users').select().where({username: user}).then(
-			function(userData){
+			function(userData){	
 
 			var data = userData[0];
-
+			
 			console.log("Data from DB: ", data);
-
+			
 			var errors= [];
 			res.render('signup', {
 		  		title: 'Update your info!',
@@ -140,3 +140,5 @@ router.get('/update', function(req,res,next){
 
 
 module.exports = router;
+
+

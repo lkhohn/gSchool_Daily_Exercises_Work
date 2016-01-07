@@ -7,14 +7,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var bcrypt = require('bcrypt');
-var cookieSession = require('cookie-session');
-
 var knex = require('knex')({
   client: 'pg',
   connection: {
     host     : '127.0.0.1',
     port     : 5432,
-    user     : 'lindsayhohn',
+    user     : 'jroel',
     database : 'eugenefanclub'
   }
 });
@@ -24,16 +22,6 @@ var knex = require('knex')({
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
-
-app.use(cookieParser());
-var cookieOptions = {
-  secret: 'sugar'
-};
-
-app.use(cookieSession(cookieOptions));
-
-
-
 
 var app = express();
 
@@ -51,7 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/auth', auth);
+app.use('/auth', auth)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -89,8 +77,8 @@ app.use(function(err, req, res, next) {
 // function hashPassword(user, callback) {
 //     curPassword = user.password
 //     bcrypt.genSalt(10, function(err, salt) {
-//         bcrypt.hash(user.password, salt, function(err, hash) {
-
+//         bcrypt.hash(user.password, salt, function(err, hash) {          
+          
 //             // Store hash in your password DB.
 //             user.password = hash;
 //             comparePassword(curPassword, user);

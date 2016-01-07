@@ -6,7 +6,7 @@ var knex = require('knex')({
   connection: {
     host     : '127.0.0.1',
     port     : 5432,
-    user     : 'lindsayhohn',
+    user     : 'jroel',
     database : 'eugenefanclub'
   }
 });
@@ -21,8 +21,8 @@ router.post('/signin', function(req, res, next) {
 
   var username = req.body.username;
   var password = req.body.password;
-
-
+  	
+  
   knex('users').select().where({username: username})
   .then(function(userData){
       //SUCESS
