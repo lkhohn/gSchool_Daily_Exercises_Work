@@ -13,25 +13,26 @@
             <td>Rating</td>
             <td>Bio</td>
           </tr>
-          {{#each restaurantDetails}}
             <tr>
-              <td><a href='/{{this.name}}'>{{this.name}}</a>
+              <td>{{name}}
               </td>
-              <td>{{this.city}}
+              <td>{{city}}
               </td>
-              <td>{{this.state}}
+              <td>{{state}}
               </td>
-              <td>{{this.cuisine}}
+              <td>{{cuisine}}
               </td>
-              <td>{{this.rating}}
+              <td>{{rating}}
               </td>
-              <td>{{this.bio}}
+              <td>{{bio}}
               </td>
             </tr>
-          {{/each}}
         </table>
       </div>
     </div>
     <div class='col-md-2'></div>
   </div>
 </div>
+
+
+<li><a href="/edit">Edit</a></li>
