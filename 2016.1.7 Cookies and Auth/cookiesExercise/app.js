@@ -28,15 +28,6 @@ app.use(cookieSession(cookieOptions));
 
 
 //session related cookies
-// function isLoggedIn(req) {
-//   //if user is logged in
-//   if(req.session && req.session.users){
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-
 app.get('/', function(req, res) {
   if(req.session && req.session.user) {
     res.send('Welcome ' + req.session.user.username);

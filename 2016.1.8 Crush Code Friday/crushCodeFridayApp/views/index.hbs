@@ -1,0 +1,40 @@
+<div class='row'>
+  <div class='container'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <div class="panel panel-default">
+        <div class="panel-heading">Restaurants</div>
+        <table class="table" id="restaurantDetails">
+          <tr id="trHead">
+            <td>Name</td>
+            <td>City</td>
+            <td>State</td>
+            <td>Cuisine</td>
+            <td>Rating</td>
+            <td>Bio</td>
+          </tr>
+          {{#each restaurantDetails}}
+            <tr>
+              <td>{{this.name}}
+              </td>
+              <td>{{this.city}}
+              </td>
+              <td>{{this.state}}
+              </td>
+              <td>{{this.cuisine}}
+              </td>
+              <td>{{this.rating}}
+              </td>
+              <td>{{this.bio}}
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+    <div class='col-md-2'></div>
+  </div>
+</div>
+
+
+<li><a href="/"></a></li>

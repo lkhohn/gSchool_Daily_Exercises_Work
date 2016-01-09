@@ -4,6 +4,7 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var cookieSession = require('cookie-session');
 var bodyParser = require('body-parser');
 var pg = require('pg');
 var bcrypt = require('bcrypt');
@@ -12,11 +13,10 @@ var knex = require('knex')({
   connection: {
     host     : '127.0.0.1',
     port     : 5432,
-    user     : 'jroel',
+    user     : 'lindsayhohn',
     database : 'eugenefanclub'
   }
 });
-
 
 
 var routes = require('./routes/index');
@@ -24,6 +24,13 @@ var users = require('./routes/users');
 var auth = require('./routes/auth');
 
 var app = express();
+
+app.use(cookieParser());
+var cookieOptions = {
+  secret: 'sugar'
+};
+app.use(cookieSession(cookieOptions));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -77,8 +84,8 @@ app.use(function(err, req, res, next) {
 // function hashPassword(user, callback) {
 //     curPassword = user.password
 //     bcrypt.genSalt(10, function(err, salt) {
-//         bcrypt.hash(user.password, salt, function(err, hash) {          
-          
+//         bcrypt.hash(user.password, salt, function(err, hash) {
+
 //             // Store hash in your password DB.
 //             user.password = hash;
 //             comparePassword(curPassword, user);
