@@ -7,3 +7,10 @@ CREATE TABLE restaurants (
   rating INTEGER,
   bio VARCHAR(510)
 );
+
+
+DROP TABLE users;
+CREATE TABLE users (
+    username    varchar(50),
+    password    varchar(256)
+);

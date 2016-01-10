@@ -54,44 +54,27 @@ router.get('/edit', function(req, res, next) {
   });
 });
 
-
-router.put('/edit', function(req, res, next) {
-  knex('edit').update({
-    name: req.body.name,
-    city: req.body.city,
-    state: req.body.state,
-    cuisine: req.body.cuisine,
-    rating: req.body.rating,
-    bio: req.body.bio
-  }).then(function(restaurantDetails) {
-    res.redirect('/');
-  });
-});
-
-// **From the ping pong app to update a user
-// PUT ‘/:id’ - updates individual resource TODO
-//curl -X PUT -d 'username=thing' https://galvanize-ping-pong-league.herokuapp.com/users/jaredM123
-// router.put('/:username', function(req, res) { // curl -X PUT -d <queryString> https://galvanize-ping-pong-league.herokuapp.com/users/<userID>
-//   var user = {};
-//   user.first_name = req.body.firstName;
-//   user.last_name = req.body.lastName;
-//   user.email = req.body.email;
-//   user.username = req.body.username;
-//   user.password = req.body.password;
-//
-//   Users().where({ // 'id', '=', Number(req.params.id)
-//       username: req.params.username
-//     })
-//     .update(user).then(function() {
-//       res.send('https://galvanize-ping-pong-league.herokuapp.com/users/');
-//       // res.redirect('/users/:username');
-//     });
+// router.put('/edit', function(req, res, next) {
+//   knex('restaurants').where(name='Los Tacos').update({
+//     // name: req.body.name,
+//     city: req.body.city,
+//     state: req.body.state,
+//     cuisine: req.body.cuisine,
+//     rating: req.body.rating,
+//     bio: req.body.bio
+//   }).then(function() {
+//     res.redirect('/');
+//   });
 // });
 
 
-
-
-
+/* Delete a restaurant */
+router.post('/', function(req, res, next) {
+  // console.log(req.body.name);
+  knex('restaurants').select().delete().then(function(data) {
+    res.redirect('/');
+  });
+});
 
 
 /* GET individual restaurant pages */
@@ -125,7 +108,6 @@ router.get('/burgerBar', function(req, res, next) {
   });
 });
 
-
 router.get('/fiestaritos', function(req, res, next) {
   knex('restaurants').select().where({
     name: 'Fiestaritos'
@@ -157,6 +139,123 @@ router.get('/pastaFreddy', function(req, res, next) {
 });
 
 
+
+/* sign up page */
+router.get('/signup', function(req, res, next) {
+  res.render('signup');
+});
+
+// Create User /register/signup
+router.post('/signup', function(req, res) {
+  // save body in user variable
+  var newUser = req.body;
+
+  // test newUser data for validation
+  var fail = true;
+  var messageData = {};
+
+  if (!newUser.username) {
+    messageData.username = 'Enter a username';
+  } else if (!newUser.password) {
+    messageData.password = "Enter a password.";
+  } else if (newUser.password !== newUser.confPassword) {
+    messageData.password = "Passwords don't match.";
+  } else if (newUser.password.length < 8) {
+    messageData.password = "Password must be at least 8 characters long.";
+  } else {
+    fail = false;
+  }
+
+  // if errors exist rerender else store user
+  if (fail === true) {
+    res.render('signup', {
+      error: messageData,
+      data: newUser
+    });
+  } else {
+    hashPassword(newUser, registerUser);
+  }
+
+  // set up functions for encryption
+  // hash with bcryp and send to knex
+  function hashPassword(user, callback) {
+    bcrypt.genSalt(10, function(err, salt) {
+      bcrypt.hash(user.password, salt, function(err, hash) {
+        // send hash to database
+        user.password = hash;
+        callback(user);
+      });
+    });
+  }
+
+  // send user data to datbase
+  function registerUser(user) {
+    knex('users').insert({
+      username: user.username,
+      password: user.password
+    }).then(function(data) {
+      res.redirect('/');
+    }, function(failure) {
+      console.log(failure);
+    });
+  }
+
+}, function(failure) {
+  res.write('this is the new page and you failed');
+  res.end();
+});
+
+
+
+
+
+
+
+/* sign in page */
+router.get('/signin', function(req, res, next) {
+  res.render('signin');
+});
+
+// post signin info and confirm correct
+router.post('/signin', function(req, res, next) {
+
+  knex('users').where({
+    username: req.body.username
+  }).then(function(user) {
+
+    function next(user, status) {
+      // console.log(status);
+      // console.log(user);
+      if (status === true) {
+        // set cookie here
+        res.redirect('/');
+      } else {
+        res.render('signin', {
+          message: "Incorrect username or password"
+        });
+      }
+    }
+    if (user[0]) {
+      // console.log(user);
+      // username/password is correct
+      comparePassword(req.body.password, user[0], next);
+    } else {
+      res.send('incorrect username or password');
+    }
+  }).catch(function(err) {
+    // if whole thing doesn't work
+    res.render('signin', {
+    message: "Incorrect username or password"
+    });
+  });
+});
+
+function comparePassword(password, user, callback) {
+  bcrypt.compare(password, user.password, function(err, res) {
+    // console.log(err);
+    callback(user, res);
+  });
+}
 
 
 
