@@ -43,16 +43,9 @@
 //   // if they equal the sum, then push to sumPairs array
 //   for (var i = 0; i < array.length - 1; i++) {
 //     for (var j = 0; j < array.length - 1; j++) {
-//       if (array[i] === array[j] && array.indexOf(i) !== array.indexOf(j)) {
+//       if (array[i] + array[j] ===sum  && array.indexOf(i) !== array.indexOf(j)) {
 //         // and arrayOne position !== arrayTwo position
 //         // then push those to the array
-//         var sumNum = array[i] + array[j];
-//         if (sumNum === sum) {
-//           sumPairs.push(array[i], array[j]);
-//         }
-//       } else if (array[i] !== array[j] && array.indexOf(i) === array.indexOf(j)) {
-//         var sumNum = array[i] + array[j];
-//         if (sumNum === sum) {
 //           sumPairs.push(array[i], array[j]);
 //         }
 //       }
