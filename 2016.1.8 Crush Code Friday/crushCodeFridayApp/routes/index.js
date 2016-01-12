@@ -26,6 +26,7 @@ router.get('/addRest', function(req, res, next) {
 
 router.post('/addRest', function(req, res, next) {
   knex('restaurants').insert({
+    // id: default,
     name: req.body.name,
     city: req.body.city,
     state: req.body.state,
@@ -38,12 +39,32 @@ router.post('/addRest', function(req, res, next) {
 });
 
 
+/* GET individual restaurant pages */
+router.get('/:id', function(req, res, next) {
+  // console.log(req.params.id);
+  // var newID = parseInt(req.params.id);
+  // console.log(typeof newID);
+  // console.log(newID);
+  knex('restaurants').where('id', req.params.id).then(function(data) {
+    // console.log(data);
+    res.render('individualRestPage', {
+      name: data[0].name,
+      city: data[0].city,
+      state: data[0].state,
+      cuisine: data[0].cuisine,
+      rating: data[0].rating,
+      bio: data[0].bio,
+      editLink: req.params.id + '/edit',
+      deleteLink: req.params.id
+    });
+  });
+});
+
 /* edit restaurant information */
-router.get('/edit', function(req, res, next) {
-  knex('restaurants').select().where({
-    name: 'Los Tacos'
-  }).then(function(data) {
+router.get('/:id/edit', function(req, res, next) {
+  knex('restaurants').where('id', req.params.id).then(function(data) {
     res.render('edit', {
+      id: data[0].id,
       name: data[0].name,
       city: data[0].city,
       state: data[0].state,
@@ -52,93 +73,27 @@ router.get('/edit', function(req, res, next) {
       bio: data[0].bio
     });
   });
-});
+  });
 
-// router.put('/edit', function(req, res, next) {
-//   knex('restaurants').where(name='Los Tacos').update({
-//     // name: req.body.name,
-//     city: req.body.city,
-//     state: req.body.state,
-//     cuisine: req.body.cuisine,
-//     rating: req.body.rating,
-//     bio: req.body.bio
-//   }).then(function() {
-//     res.redirect('/');
-//   });
-// });
-
+  router.post('/:id/edit', function(req, res, next){
+    knex('restaurants').where('id', req.params.id).update({
+      name: req.body.name,
+      city: req.body.city,
+      state: req.body.state,
+      cuisine: req.body.cuisine,
+      rating: req.body.rating,
+      bio: req.body.bio
+    }).then(function(restaurantDetails) {
+      res.redirect('/');
+    });
+  });
 
 /* Delete a restaurant */
-router.post('/', function(req, res, next) {
-  // console.log(req.body.name);
-  knex('restaurants').select().delete().then(function(data) {
+router.post('/:id', function(req, res, next) {
+  knex('restaurants').delete().where('id', req.params.id).then(function() {
     res.redirect('/');
   });
 });
-
-
-/* GET individual restaurant pages */
-router.get('/losTacos', function(req, res, next) {
-  knex('restaurants').select().where({
-    name: 'Los Tacos'
-  }).then(function(data) {
-    res.render('losTacos', {
-      name: data[0].name,
-      city: data[0].city,
-      state: data[0].state,
-      cuisine: data[0].cuisine,
-      rating: data[0].rating,
-      bio: data[0].bio
-    });
-  });
-});
-
-router.get('/burgerBar', function(req, res, next) {
-  knex('restaurants').select().where({
-    name: 'Burger Bar'
-  }).then(function(data) {
-    res.render('burgerBar', {
-      name: data[0].name,
-      city: data[0].city,
-      state: data[0].state,
-      cuisine: data[0].cuisine,
-      rating: data[0].rating,
-      bio: data[0].bio
-    });
-  });
-});
-
-router.get('/fiestaritos', function(req, res, next) {
-  knex('restaurants').select().where({
-    name: 'Fiestaritos'
-  }).then(function(data) {
-    res.render('fiestaritos', {
-      name: data[0].name,
-      city: data[0].city,
-      state: data[0].state,
-      cuisine: data[0].cuisine,
-      rating: data[0].rating,
-      bio: data[0].bio
-    });
-  });
-});
-
-router.get('/pastaFreddy', function(req, res, next) {
-  knex('restaurants').select().where({
-    name: 'Pasta Freddy'
-  }).then(function(data) {
-    res.render('pastaFreddy', {
-      name: data[0].name,
-      city: data[0].city,
-      state: data[0].state,
-      cuisine: data[0].cuisine,
-      rating: data[0].rating,
-      bio: data[0].bio
-    });
-  });
-});
-
-
 
 /* sign up page */
 router.get('/signup', function(req, res, next) {
@@ -245,7 +200,7 @@ router.post('/signin', function(req, res, next) {
   }).catch(function(err) {
     // if whole thing doesn't work
     res.render('signin', {
-    message: "Incorrect username or password"
+      message: "Incorrect username or password"
     });
   });
 });
