@@ -1,0 +1,35 @@
+extends ../layout 
+
+block content 
+
+  div.container
+    if book
+      h1 Editing #{book.title}
+      form(action='/books/'+book.id method='post')
+        div.form-group
+          label(for="author") Author
+          input.form-control(type="text" id="author" name="author" value= book.author placeholder="Author")
+        div.form-group
+          label(for="title") Title
+          input.form-control(type="text" id="title" name="title" value= book.title placeholder="Title")
+        div.form-group
+            label Rate this book
+            p
+              input(type="radio" name="rating" value="1" checked=(book ? (book.rating === 1 ? true : undefined): undefined))
+              one 1 (Lame)
+        div.form-group
+          input(type="radio" name="rating" value="2" checked=(book ? (book.rating === 2 ? true : undefined): undefined))
+          two 2
+        div.form-group
+          input(type="radio" name="rating" value="3" checked=(book ? (book.rating === 3 ? true : undefined): undefined))
+          three 3
+        div.form-group
+          input(type="radio" name="rating" value="4" checked=(book ? (book.rating === 4 ? true : undefined): undefined))
+          four 4 (Awesome)
+        div.form-group
+          label(for="description") Description
+          textarea.form-control(rows="5" name="description" id='description') #{book.description}
+          button.btn.btn-primary(type="submit") Update
+
+                
+  

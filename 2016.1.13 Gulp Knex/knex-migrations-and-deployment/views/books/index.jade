@@ -1,0 +1,25 @@
+extends ../layout 
+
+block content 
+
+  h1 Showing All Books
+    
+  if books
+    table.table.table-striped
+     thead
+       tr
+         th Author
+         th Title
+         th Rating
+         th Description
+     tbody
+       for book in books
+         tr
+           td= book.author
+           td: a(href='/books/'+book.id)= book.title
+           td= book.rating
+           td= book.description
+
+
+   div
+    a(href='/books/new') Add a Book

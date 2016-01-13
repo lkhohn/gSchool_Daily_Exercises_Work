@@ -29,7 +29,6 @@ try {
   console.log(err);
 }
 
-
 function reverseDoc(){
 fs.readFile(process.argv[2], 'utf-8', function(err, data){
   if (err){
@@ -37,15 +36,17 @@ fs.readFile(process.argv[2], 'utf-8', function(err, data){
     console.log('could not read file');
     return;
   } else {
-    fs.writeFile(process.argv[2], '.reverse', reverseLines(data) function(err) {
+    fs.writeFile(process.argv[2], '.reverse', reverseLines(data), function(err) {
       if (err) {
         console.log(err.stack);
         console.log('could not read file');
         }
   });
+}
 })
 }
 
 function reverseLines(lines) {
-  var lines = data.reverse().split('\n');
+  var newLines = lines.reverse().split('\n');
+  console.log(newLines);
 }
