@@ -8,22 +8,20 @@ var knex = require('knex')({
 });
 
 
-
-
 /* GET home page. */
 router.get('/', function(req, res, next) {
   knex('posts').select().then(function(postDetails){
     res.render('index', {
       title: 'BlueIt',
-      postDetails: postDetails
+      postDetails: postDetails,
+      addPost: '/addPost'
         });
     });
 });
 
 /* POST create a new post */
 router.get('/addPost', function(req, res, next){
-res.render('addPost', {
-  });
+  res.render('addPost');
 });
 
 router.post('/addPost', function(req, res, next){
@@ -33,14 +31,16 @@ router.post('/addPost', function(req, res, next){
     content: req.body.content,
     category: req.body.category,
     user_id: req.body.user_id
-  }).then(function(postDetails){
+  }).then(function(){
     res.redirect('/');
   });
 });
 
 
+
 /* GET individual post page */
 router.get('/:id', function(req, res, next){
+  console.log('asdfasd')
   knex('posts').where('id', req.params.id).then(function(data){
     res.render('individualPost', {
       id: data[0].id,
@@ -81,11 +81,20 @@ router.post('/:id/editPost', function(req, res, next){
 });
 
 /* DELETE individual posts */
-router.post('/:id', function(req, res, next){
-  knex('posts').where('id', req.params.id).delete().then(function(){
-    res.redirect('/');
-  });
-});
+// router.post('/:id', function(req, res, next){
+//   knex('posts').where('id', req.params.id).delete().then(function(){
+//     res.redirect('/');
+//   });
+// });
+
+
+
+
+
+
+
+
+
 
 
 
