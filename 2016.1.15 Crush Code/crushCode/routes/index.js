@@ -40,7 +40,6 @@ router.post('/addPost', function(req, res, next){
 
 /* GET individual post page */
 router.get('/:id', function(req, res, next){
-  console.log('asdfasd')
   knex('posts').where('id', req.params.id).then(function(data){
     res.render('individualPost', {
       id: data[0].id,
