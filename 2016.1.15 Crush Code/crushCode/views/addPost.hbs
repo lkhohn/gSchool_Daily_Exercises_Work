@@ -1,0 +1,25 @@
+<form class="" action="{{addPost}}" method="post">
+  <div class="form-group">
+    <label for="id">id</label>
+    <input type="text" class="form-control" value="{{postDetails.id}}" name="id" placeholder="{{id}}">
+  </div>
+  <div class="form-group">
+    <label for="title">title</label>
+    <input type="text" class="form-control" value="{{postDetails.title}}" name="title" placeholder="{{title}}">
+  </div>
+  <div class="form-group">
+    <label for="content">content</label>
+    <input type="text" class="form-control" value="{{postDetails.content}}" name="content" placeholder="{{content}}">
+  </div>
+  <div class="form-group">
+    <label for="category">category</label>
+    <input type="text" class="form-control" value="{{postDetails.category}}" name="category" placeholder="{{category}}">
+  </div>
+  <div class="form-group">
+    <label for="user_id">user_id</label>
+    <input type="text" class="form-control" value="{{postDetails.user_id}}" name="user_id" placeholder="{{user_id}}">
+  </div>
+  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="cancel" class="btn btn-default">Cancel</button>
+
+</form>

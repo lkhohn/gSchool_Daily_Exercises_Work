@@ -1,2 +1,42 @@
 <h1>{{title}}</h1>
 <p>Welcome to {{title}}</p>
+
+
+<div class='row'>
+  <div class='container'>
+    <div class='col-md-1'></div>
+    <div class='col-md-10'>
+      <div class="panel panel-default">
+        <div class="panel-heading">BlueIt</div>
+
+        <table class="table" id="postDetails">
+          <tr id="trHead">
+            <td>ID</td>
+            <td>Title</td>
+            <td>Content</td>
+            <td>Category</td>
+            <td>User ID</td>
+          </tr>
+          {{#each postDetails}}
+            <tr>
+              <td><a href='/{{this.id}}'>{{this.id}}</a>
+              </td>
+              <td>{{this.title}}
+              </td>
+              <td>{{this.content}}
+              </td>
+              <td>{{this.category}}
+              </td>
+              <td>{{this.user_id}}
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+      <button type="submit" class="btn btn-default"><a href='/addPost'>Add A Post</a></button>
+
+
+    </div>
+    <div class='col-md-1'></div>
+  </div>
+</div>
