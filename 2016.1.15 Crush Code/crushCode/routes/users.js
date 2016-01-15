@@ -55,26 +55,18 @@ router.get('/signin', function(req, res, next) {
 });
 
 router.post('/signin', function(req, res, next){
-  knex('users').where({
+  knex('users').first().where({
     username: req.body.username
-  }).then(function(){
-    if(user[0]){
-    comparePassword(req.body.password, user[0], next);
-  }
-});
-function next(){
-  res.redirect('/userHome');
-}
-
-function compareHashPassword(user, callback){
-  // Load hash from your password DB.
-  bcrypt.compare(password, user.password, function(err, res) {
-      // res == true
-      callback(user, res);
+  }).then(function(user){
+    bcrypt.compare(req.body.password, user.password, function(err, match) {
+      if(match){
+        res.redirect('/users/userHome');
+      } else {
+        res.send('incorrect');
+      }
+    });
   });
-}
 });
-
 
 
 
