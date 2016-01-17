@@ -40,13 +40,13 @@ router.post('/addPost', function(req, res, next){
 
 /* GET similar category posts */
 router.get('/:cat', function(req, res, next){
-  knex('posts').groupBy('category').then(function(data){
+  console.log(req.params.cat);
+  knex('posts').groupBy('id').having('category', '=', req.params.cat).then(function(postDetails){
   res.render('similarCat', {
     postDetails: postDetails
   });
 });
 });
-
 
 
 
