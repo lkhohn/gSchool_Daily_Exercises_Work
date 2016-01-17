@@ -38,6 +38,18 @@ router.post('/addPost', function(req, res, next){
 
 
 
+/* GET similar category posts */
+router.get('/:cat', function(req, res, next){
+  knex('posts').groupBy('category').then(function(data){
+  res.render('similarCat', {
+    postDetails: postDetails
+  });
+});
+});
+
+
+
+
 /* GET individual post page */
 router.get('/:id', function(req, res, next){
   knex('posts').where('id', req.params.id).then(function(data){
@@ -50,6 +62,15 @@ router.get('/:id', function(req, res, next){
       editLink: req.params.id +'/editPost',
       deleteLink: req.params.id
     });
+  });
+});
+
+
+
+/* DELETE individual posts */
+router.post('/:id', function(req, res, next){
+  knex('posts').where('id', req.params.id).delete().then(function(){
+    res.redirect('/');
   });
 });
 
@@ -78,13 +99,6 @@ router.post('/:id/editPost', function(req, res, next){
     res.redirect('/');
   });
 });
-
-/* DELETE individual posts */
-// router.post('/:id', function(req, res, next){
-//   knex('posts').where('id', req.params.id).delete().then(function(){
-//     res.redirect('/');
-//   });
-// });
 
 
 
