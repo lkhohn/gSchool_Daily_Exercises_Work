@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title></title>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
+  </head>
+
+  <body>
+    <h1>Hello World</h1>
+
+    <select ng-model='greeting'>
+      <option>Hello</option>
+      <option>Greetings</option>
+      <option>Salutations</option>
+      <option>Live Long and Prosper</option>
+    </select>
+
+    <label>Name:</label>
+    <input type='text' ng-model='firstName' placeholder='Enter a first name here'>
+    <input type='text' ng-model='lastName' placeholder='Enter a last name here'>
+    <h2>
+      {{ greeting }} {{ firstName }} {{ lastName}}!
+    </h2>
+    <h2>{{ newGreeting }}</h2>
+    <h2>{{ newGreeting }} {{ newFullName }}</h2>
+
+
+    <button ng-click="newGreeting = greeting" ng-init="greeting='Greetings'">Submit</button>
+    <button ng-click="newFullName = firstName + ' ' + lastName" ng-init="greeting='Greetings'">Submit</button>
+
+<div>
+    {{3.14159265359}}
+    {{3.14159265359 | currency: "€"}}
+</div>
+
+<div>
+  <input type='text' ng-model='text' placeholder='Enter text here'>
+  {{ text | lowercase}}
+  {{ text | uppercase}}
+</div>
+
+<div>
+  <h2>How many digits of pi do you want?</h2>
+  <select ng-model='decimal'>
+    <option>1</option>
+    <option>2</option>
+    <option>3</option>
+    <option>4</option>
+    <option>5</option>
+    <option>6</option>
+    <option>7</option>
+  </select>
+  {{ 3.14159265359 | number : decimal}}
+  <h2 ng-pluralize count="decimal" when="{'1': 'The first digit of pi.', 'other': 'The first {{decimal}} digits of pi.'}">
+  The first {{decimal}} digits of pi</h2 ng-pluralize>
+</div>
+
+<div>
+<h2>Tip Calculator</h2>
+<label>How much did your meal cost:</label>
+<input type='text' ng-model='mealCost' placeholder='Enter meal cost'>
+<label>How much do you want to tip?</label>
+<select ng-model='tip'>
+  <option value='.10'>10</option>
+  <option value='.15'>15</option>
+  <option value='.20'>20</option>
+  <option value='.25'>25</option>
+</select>
+<h3>Subtotal: {{ mealCost | currency}}</h3>
+<h3>Tip: {{ ( mealCost * tip ) | currency}}</h3>
+</div>
+
+<div>
+  <h2>Form</h2>
+  <label>Name:</label>
+  <input type='text' ng-model='name' placeholder='name'>
+  <label>Adjective:</label>
+  <input type='text' ng-model='adjective' placeholder='adjective'>
+  <label>Plural Noun:</label>
+  <input type='text' ng-model='pluralNoun1' placeholder='plural noun'>
+  <label>Plural Noun:</label>
+  <input type='text' ng-model='pluralNoun2' placeholder='plural noun'>
+  <label>Insect Plural:</label>
+  <input type='text' ng-model='insectPlural' placeholder='insect plural'>
+  <label>Plural Noun:</label>
+  <input type='text' ng-model='pluralNoun3' placeholder='plural noun'>
+  <label>Verb ending in S:</label>
+  <input type='text' ng-model='verbEndingS' placeholder='verb ending in S'>
+
+  <button ng-click="checked=true">Generate</button>
+    <div class="check-element animate-hide" ng-show="checked">
+      <h3>name word {{name}}. adjective word {{adjective}}. plural noun one {{pluralNoun1}}.<br>
+      plural noun two {{pluralNoun2}}. insect plural {{insectPlural}}. <br>
+      plural noun 3 {{pluralNoun3}}. verb ending S {{verbEndingS}}.
+      </h3>
+    </div>
+</div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+  </body>
+</html>
