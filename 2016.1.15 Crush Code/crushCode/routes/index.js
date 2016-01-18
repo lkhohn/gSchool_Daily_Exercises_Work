@@ -19,6 +19,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
 /* POST create a new post */
 router.get('/addPost', function(req, res, next){
   res.render('addPost');
@@ -37,7 +38,6 @@ router.post('/addPost', function(req, res, next){
 });
 
 
-
 /* GET similar category posts */
 router.get('/:cat', function(req, res, next){
   console.log(req.params.cat);
@@ -47,7 +47,6 @@ router.get('/:cat', function(req, res, next){
   });
 });
 });
-
 
 
 /* GET individual post page */
@@ -64,7 +63,6 @@ router.get('/:id', function(req, res, next){
     });
   });
 });
-
 
 
 /* DELETE individual posts */
