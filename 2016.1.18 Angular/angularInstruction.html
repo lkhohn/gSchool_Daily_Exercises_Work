@@ -5,6 +5,15 @@
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"> -->
   </head>
+<style>
+.incorrectLength {
+  color: red;
+}
+.correctLength {
+  color:green;
+}
+</style>
+
 
   <body>
     <h1>Hello World</h1>
@@ -96,6 +105,91 @@
       </h3>
     </div>
 </div>
+
+<div ng-init='names=["Gunther", "Finn", "Jake", "Poe", "Solo"]'>
+  <ul>
+    <li ng-repeat='name in names'>
+      {{ name }}
+    </li>
+  </ul>
+</div>
+
+
+<div ng-init='symbols=["&spades;", "&clubs;", "&hearts;", "&diams;"]'>
+  <ul>
+    <li ng-repeat='symbol in symbols'>
+      {{ symbol }}
+    </li>
+  </ul>
+</div>
+
+<div ng-init='numbers=[1,1,2,5,6,9,9,9]'>
+  <ul>
+    <li ng-repeat='number in [1,1,2,5,6,9,9,9] track by $index'>
+      {{ number }}
+    </li>
+  </ul>
+</div>
+
+<div ng-init="animals = [
+  {mammal:'dog'},
+  {mammal:'cat'},
+  {insect:'lady bug'}]">
+    <ul>
+      <li ng-repeat='animal in animals'>
+        {{ animal.mammal }}
+      </li>
+    </ul>
+</div>
+
+<div>
+  <h1>Sign up page</h1>
+  <input type='text' ng-model='password' ng-minlength="0" required placeholder='password'>
+  <h3 ng-class="{correctLength: password.length>=5}">Your password is {{ password.length }} characters</h3>
+  <div>
+      <h3 ng-show='password.length<5' ng-class="{incorrectLength: password.length<5}">password is invalid</h3>
+      <button ng-show='password.length>=5'>Sign Up!</button>
+  </div>
+</div>
+
+<div>
+  <h1>Camera Shop</h1>
+  <select ng-model='choice'>
+    <option>rating</option>
+    <option>price</option>
+  </select>
+
+  [
+    {
+      title: "Nikon D3100 DSLR",
+      image: "http://ecx.images-amazon.com/images/I/713u2gDQqML._SX522_.jpg",
+      rating: 3.4,
+      price: 369.99,
+      onSale: true
+    },
+    {
+      title: "Canon EOS 70D",
+      image: "http://ecx.images-amazon.com/images/I/81U00AkAUWL._SX522_.jpg",
+      rating: 2.0,
+      price: 1099.0,
+      onSale: false
+    },
+    {
+      title: "Nikon D810A",
+      image:"http://ecx.images-amazon.com/images/I/91wtXIfLl2L._SX522_.jpg",
+      rating: 4.2,
+      price: 3796.95,
+      onSale: true
+    }
+  ]
+
+
+</div>
+
+
+
+
+
 
     <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
   </body>
