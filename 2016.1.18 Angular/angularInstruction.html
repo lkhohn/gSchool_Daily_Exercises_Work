@@ -12,6 +12,16 @@
 .correctLength {
   color:green;
 }
+img {
+  height: 50px;
+  width: 50px;
+}
+.onSale {
+  color:red;
+}
+ul {
+  list-style:none;
+}
 </style>
 
 
@@ -158,8 +168,7 @@
     <option>rating</option>
     <option>price</option>
   </select>
-
-  [
+  <div ng-init='cameras = [
     {
       title: "Nikon D3100 DSLR",
       image: "http://ecx.images-amazon.com/images/I/713u2gDQqML._SX522_.jpg",
@@ -180,9 +189,38 @@
       rating: 4.2,
       price: 3796.95,
       onSale: true
-    }
-  ]
+    }]'>
+  </div>
 
+    <ul>
+      <li ng-repeat="camera in cameras | orderBy:choice">
+        <ul>
+          <li>
+            <strong>Title:  {{ camera.title }}</strong>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            <img ng-src="{{ camera.image }}" alt="Description"/>
+          </li>
+        </ul>
+        <ul>
+          <li>
+            Rating:  {{ camera.rating }}
+          </li>
+        </ul>
+        <ul>
+          <li ng-class="{onSale: camera.onSale==true}">
+            Price:  {{ camera.price }}
+          </li>
+        </ul>
+        <ul>
+          <li ng-if="camera.onSale==true">
+            On Sale!!
+          </li>
+        </ul>
+      </li>
+    </ul>
 
 </div>
 
