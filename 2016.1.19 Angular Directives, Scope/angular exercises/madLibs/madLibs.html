@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='madLibs'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+  </head>
+  <body>
+    <div>
+      <h2 ng-controller="madLibsController">Form</h2>
+      <label>Name:</label>
+      <input type='text' ng-model='words.name' placeholder='name'>
+      <label>Adjective:</label>
+      <input type='text' ng-model='words.adjective' placeholder='adjective'>
+      <label>Plural Noun:</label>
+      <input type='text' ng-model='words.pluralNoun1' placeholder='plural noun'>
+      <label>Plural Noun:</label>
+      <input type='text' ng-model='words.pluralNoun2' placeholder='plural noun'>
+      <label>Insect Plural:</label>
+      <input type='text' ng-model='words.insectPlural' placeholder='insect plural'>
+      <label>Plural Noun:</label>
+      <input type='text' ng-model='words.pluralNoun3' placeholder='plural noun'>
+      <label>Verb ending in S:</label>
+      <input type='text' ng-model='words.verbEndingS' placeholder='verb ending in S'>
+
+      <button ng-click="checked=true">Generate</button>
+        <div class="check-element animate-hide" ng-show="checked">
+          <h3>name word {{words.name}}. adjective word {{words.adjective}}. plural noun one {{words.pluralNoun1}}.<br>
+          plural noun two {{words.pluralNoun2}}. insect plural {{words.insectPlural}}. <br>
+          plural noun 3 {{words.pluralNoun3}}. verb ending S {{words.verbEndingS}}.
+          </h3>
+        </div>
+        <button ng-click="words = null ; checked=false">Clear</button>
+    </div>
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+    <script src='main.js'></script>
+  </body>
+</html>
