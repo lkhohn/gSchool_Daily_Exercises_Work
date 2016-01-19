@@ -1,0 +1,79 @@
+<!-- ng-calculator
+Todays warm up we will create a calculator using Angular without using a controller.
+Needs to be able to multiply, add and subtract two numbers and have a clear button. -->
+
+
+<!DOCTYPE html>
+<html lang="en" ng-app>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+  </head>
+
+<body>
+  <div>
+    <button ng-click="number = null">Clear</button>
+
+    <h2>Add</h2>
+    <label>Number 1</label>
+    <input type='number' ng-model='number.number1'>
+    <label>Number 2</label>
+    <input type='number' ng-model='number.number2'>
+    <p>Sum: {{ (number.number1 + number.number2) }} </p>
+
+    <h2>Subtract</h2>
+    <label>Number 1</label>
+    <input type='number' ng-model='number.number3'>
+    <label>Number 2</label>
+    <input type='number' ng-model='number.number4'>
+    <p>Difference: {{ (number.number3 - number.number4) }}</p>
+
+    <h2>Multiply</h2>
+    <label>Number 1</label>
+    <input type='number' ng-model='number.number5'>
+    <label>Number 2</label>
+    <input type='number' ng-model='number.number6'>
+    <p>Product: {{ (number.number5 * number.number6) }}</p>
+
+    <h2>Divide</h2>
+    <label>Number 1</label>
+    <input type='number' ng-model='number.number7'>
+    <label>Number 2</label>
+    <input type='number' ng-model='number.number8'>
+    <p>Quotient: {{ (number.number7 / number.number8) }}</p>
+
+  </div>
+  <div>
+
+    <button value='1' type='number' ng-model='numberButton.1' ng-click='numberButton.1'>1</button>
+    <button value='2' ng-model='numberButton.2'>2</button>
+    <button value='3' ng-model='numberButton.3'>3</button>
+    <button value='4' ng-model='numberButton.4'>4</button>
+    <button value='5' ng-model='numberButton.5'>5</button>
+    <button value='6' ng-model='numberButton.6'>6</button>
+    <button value='7' ng-model='numberButton.7'>7</button>
+    <button value='8' ng-model='numberButton.8'>8</button>
+    <button value='9' ng-model='numberButton.9'>9</button>
+    <button value='0' ng-model='numberButton.0'>0</button>
+    <button value='+' ng-model='numberButton.add'>+</button>
+    <button value='-' ng-model='numberButton.subtract'>-</button>
+    <button value='*' ng-model='numberButton.multiply'>*</button>
+    <button value='/' ng-model='numberButton.divide'>/</button>
+    <p>
+      Calculation: {{  }}
+    </p>
+
+    <button ng-click="numberButton = null">Clear</button>
+
+
+
+
+
+
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+</body>
+</html>
