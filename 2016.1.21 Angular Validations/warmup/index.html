@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="groceryApp">
+  <head>
+
+    <title></title>
+
+
+  </head>
+<body ng-controller='GroceryController as GC'>
+<h3>add an item</h3>
+
+  <input type="text" ng-model='GC.itemName'/>
+  <input type='button' ng-click='GC.addItem()' value='Add'/>
+  <ul>
+    <li ng-repeat="item in GC.groceries | orderBy: 'checked'">
+      <input type='checkbox' ng-model='item.checked' ng-checked='item.checked'/>
+      {{ $index }} {{ item.name }}
+      <input type='button' value='remove' ng-click='GC.removeItem(item.name)'>
+    </li>
+  </ul>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+    <script src='app.js'></script>
+    <script src='groceryListController.js'></script>
+
+
+  </body>
+</html>
