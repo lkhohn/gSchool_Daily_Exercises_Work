@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='firstApp'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+<style>
+  .winner {
+    color: green;
+  }
+  .loser {
+    color: red;
+  }
+</style>
+  </head>
+  <body>
+    <div ng-controller="MyFirstController">
+      <h3>The number is {{ number }} </h3>
+      <button ng-click="pickRandomNumber()"> Pick A Random Number </button>
+    </div>
+
+    <div ng-controller="ReverseController">
+      <h3>Word Reverser</h3>
+      <input type="text" ng-model='word'>
+      <h4>Your word is: {{ word }}</h4>
+      <button ng-click="wordReverser()">Reverse</button>
+      <h4>Your reversed word is: {{ wordReversed }}</h4>
+    </div>
+
+    <div ng-controller="PingPong">
+      <h3>PingPong</h3>
+        <h4 ng-class='playerOne'>Player One</h4>
+        <h5 ng-init="playerOnePoints=0">Player One Points: {{ playerOnePoints }}</h5>
+        <button ng-click="addPlayerOnePoint()">Add Player One Point</button>
+
+        <h4 ng-class='playerTwo'>Player Two</h4>
+        <h5 ng-init="playerTwoPoints=0">Player Two Points: {{ playerTwoPoints }}</h5>
+        <button ng-click="addPlayerTwoPoint()">Add Player Two Point</button>
+
+        <button ng-click="reset()">Reset</button>
+
+    </div>
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+    <script src='ngClick.js'></script>
+  </body>
+</html>
