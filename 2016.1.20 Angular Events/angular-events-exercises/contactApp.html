@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  </head>
+  <body ng-app="contactApp">
+    <div class='container'>
+      <div ng-controller="ContactController as CC">
+        <h4>Contacts App</h4>
+        <label>Name: </label>
+        <input type='text' ng-model='CC.name'>
+        <label>Email: </label>
+        <input type='email' ng-model='CC.email'>
+        <label>Phone: </label>
+        <input type='text' ng-model='CC.phone'>
+        <input type='button' value='submit' ng-click='CC.addItem()'>
+        <input type='text' ng-model='searchText'>
+        <input type='button' value='search'>
+
+        <table class="table table-striped">
+          <tr>
+            <td>
+              Name
+            </td>
+            <td>
+              Email
+            </td>
+            <td>
+              Phone
+            </td>
+          </tr>
+          <tr ng-repeat='individual in CC.contacts | filter:searchText'>
+            <td>
+              {{ individual.name }}
+            </td>
+            <td>
+              {{ individual.email }}
+            </td>
+            <td>
+              {{ individual.phone }}
+            </td>
+          </tr>
+        </table>
+      </div>
+
+
+    </div>
+
+    <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js'></script>
+    <script src='app.js'></script>
+    <script src='contactAppController.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
