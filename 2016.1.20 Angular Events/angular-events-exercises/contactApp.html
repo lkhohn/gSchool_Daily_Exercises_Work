@@ -27,26 +27,14 @@
 
         <table class="table table-striped">
           <tr>
-            <td>
-              Name
-            </td>
-            <td>
-              Email
-            </td>
-            <td>
-              Phone
-            </td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Phone</td>
           </tr>
           <tr ng-repeat='individual in CC.contacts | filter:searchText'>
-            <td>
-              {{ individual.name }}
-            </td>
-            <td>
-              {{ individual.email }}
-            </td>
-            <td>
-              {{ individual.phone }}
-            </td>
+            <td>{{ individual.name }}</td>
+            <td>{{ individual.email }}</td>
+            <td>{{ individual.phone }}</td>
           </tr>
         </table>
       </div>

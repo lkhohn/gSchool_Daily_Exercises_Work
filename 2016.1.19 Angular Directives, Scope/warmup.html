@@ -47,33 +47,39 @@ Needs to be able to multiply, add and subtract two numbers and have a clear butt
   </div>
   <div>
 
-    <button value='1' type='number' ng-model='numberButton.1' ng-click='numberButton.1'>1</button>
-    <button value='2' ng-model='numberButton.2'>2</button>
-    <button value='3' ng-model='numberButton.3'>3</button>
-    <button value='4' ng-model='numberButton.4'>4</button>
-    <button value='5' ng-model='numberButton.5'>5</button>
-    <button value='6' ng-model='numberButton.6'>6</button>
-    <button value='7' ng-model='numberButton.7'>7</button>
-    <button value='8' ng-model='numberButton.8'>8</button>
-    <button value='9' ng-model='numberButton.9'>9</button>
-    <button value='0' ng-model='numberButton.0'>0</button>
-    <button value='+' ng-model='numberButton.add'>+</button>
-    <button value='-' ng-model='numberButton.subtract'>-</button>
-    <button value='*' ng-model='numberButton.multiply'>*</button>
-    <button value='/' ng-model='numberButton.divide'>/</button>
+    <button value='1' ng-model='1' ng-click>1</button>
+    <button value='2' ng-model='2'>2</button>
+    <button value='3' ng-model='3'>3</button>
+    <button value='4' ng-model='4'>4</button>
+    <button value='5' ng-model='5'>5</button>
+    <button value='6' ng-model='6'>6</button>
+    <button value='7' ng-model='7'>7</button>
+    <button value='8' ng-model='8'>8</button>
+    <button value='9' ng-model='9'>9</button>
+    <button value='0' ng-model='0'>0</button>
+    <button value='+' ng-model='add'>+</button>
+    <button value='-' ng-model='subtract'>-</button>
+    <button value='*' ng-model='multiply'>*</button>
+    <button value='/' ng-model='divide'>/</button>
     <p>
-      Calculation: {{  }}
+      Calculation: {{ view.numberButton }}
     </p>
 
     <button ng-click="numberButton = null">Clear</button>
 
-
-
-
-
-
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+  <script>
+    var app = angular.module('calculatorApp', [])
+    app.controller('MainController', function($scope){
+      $scope.
+    })
+
+
+  </script>
+
+
+
 </body>
 </html>

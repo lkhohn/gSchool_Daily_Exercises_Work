@@ -17,7 +17,7 @@
   </head>
   <body ng-app='app' ng-controller='FormController as VC'>
     <div class='container'>
-      <form name=userForm novalidate>
+      <form name='userForm' novalidate>
         <div class="form-group" ng-class="{ 'has-error': userForm.username.$invalid && userForm.username.$dirty, 'has-success': userForm.username.$valid && userForm.username.$dirty}">
           <label class="control-label">Username</label>
           <input type="text"
@@ -27,9 +27,14 @@
           ng-minlength='3'
           ng-maxlength='10'
           required>
-          <p ng-show="userForm.username.$error.minlength">Username is too short.</p>
-          <p ng-show="userForm.username.$error.maxlength">Username is too long.</p>
-          <p ng-show="userForm.username.$error.required && userForm.username.$dirty.required">Your username is required.</p>
+          <div class='help-block' ng-messages="userForm.username.$error" style="color:maroon" role="alert" ng-show="userForm.username.$touched">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+          </div>
+          <!-- <p ng-show="userForm.username.$error.minlength">Username is too short.</p> -->
+          <!-- <p ng-show="userForm.username.$error.maxlength">Username is too long.</p> -->
+          <!-- <p ng-show="userForm.username.$error.required && userForm.username.$dirty.required">Your username is required.</p> -->
         </div>
         <div class="form-group" ng-class="{ 'has-error': userForm.password.$invalid && userForm.password.$dirty, 'has-success': userForm.password.$valid && userForm.password.$dirty}">
           <label class="control-label">Password</label>
@@ -40,9 +45,14 @@
           ng-minlength='3'
           ng-maxlength='10'
           required>
-          <p ng-show="userForm.password.$error.minlength">password is too short.</p>
+          <div class='help-block' ng-messages="userForm.password.$error" style="color:maroon" role="alert" ng-show="userForm.password.$touched">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+          </div>
+          <!-- <p ng-show="userForm.password.$error.minlength">password is too short.</p>
           <p ng-show="userForm.password.$error.maxlength">password is too long.</p>
-          <p ng-show="userForm.password.$error.required  && userForm.username.$dirty.required">Your password is required.</p>
+          <p ng-show="userForm.password.$error.required  && userForm.username.$dirty.required">Your password is required.</p> -->
         </div>
         <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && userForm.email.$dirty, 'has-success': userForm.email.$valid && userForm.email.$dirty}">
           <label class="control-label">Email</label>
@@ -51,7 +61,11 @@
           name='email'
           ng-model='VC.email'
           required>
-          <p ng-show='userForm.email.$error.required && userForm.email.$dirty.required'>Your email is required</p>
+          <div class='help-block' ng-messages="userForm.email.$error" style="color:maroon" role="alert" ng-show="userForm.email.$touched">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="type">You did not enter a valid email</div>
+          </div>
+          <!-- <p ng-show='userForm.email.$error.required && userForm.email.$dirty.required'>Your email is required</p> -->
         </div>
         <div class="form-group" ng-class="{ 'has-error': userForm.zipCode.$invalid && userForm.zipCode.$dirty, 'has-success': userForm.zipCode.$valid && userForm.zipCode.$dirty}">
           <label class="control-label">Zip Code</label>
@@ -62,14 +76,18 @@
           ng-minlength='5'
           ng-maxlength='5'
           required>
-          <p ng-show='userForm.zipCode.$error.minlength'>zip code is too short</p>
+          <div class='help-block' ng-messages="userForm.zipCode.$error" style="color:maroon" role="alert" ng-show="userForm.zipCode.$touched">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+            <div ng-message="maxlength">Your field is too long</div>
+          </div>
+          <!-- <p ng-show='userForm.zipCode.$error.minlength'>zip code is too short</p>
           <p ng-show='userForm.zipCode.$error.maxlength'>zip code is too long</p>
-          <p ng-show="userForm.zipCode.$error.required && userForm.zipCode.$dirty.required">Your zipcode is required.</p>
+          <p ng-show="userForm.zipCode.$error.required && userForm.zipCode.$dirty.required">Your zipcode is required.</p> -->
         </div>
         <div class='form-group'>
           <input type="button" ng-disabled='!userForm.$valid' value='Submit' class="btn btn-primary" ng-click='VC.displayUsers()'>
         </div>
-
         <ul>
           <li ng-repeat="userDetails in VC.users">
             username: {{ userDetails.username }}
@@ -82,10 +100,6 @@
 
 
 </div>
-
-
-
-
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
