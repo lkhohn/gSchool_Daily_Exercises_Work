@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+
+  </head>
+  <body ng-app='app' ng-controller = "ToDoController as TD">
+    <div class='container'>
+
+
+
+      <select aria-label="ngSelected demo">
+        <option ng-selected="selected">To Do List </option>
+        <option>Current Tasks</option>
+        <option>Completed Tasks</option>
+      </select>
+
+      <form name='userForm'>
+        <h1>Add task:</h1>
+        <label>Task: </label>
+        <input type="text" class="form-control" name="task" placeholder="Task" ng-model='TD.task'>
+        <input type="button" class="btn btn-default" value="Submit" ng-click="TD.addPost()">
+
+      <h1>To Do List</h1>
+      <table class="table table-striped">
+        <tr>
+          <td><a href="#" ng-click="sortType = 'task'; sortReverse = !sortReverse">Task
+            <span ng-show="sortType == 'task' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'task' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse">Date
+            <span ng-show="sortType == 'date' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'date' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'current'; sortReverse = !sortReverse">Current Task
+            <span ng-show="sortType == 'current' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'current' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'complete'; sortReverse = !sortReverse">Completed Task
+            <span ng-show="sortType == 'complete' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'complete' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td>Delete</td>
+        </tr>
+        <tr ng-repeat='individualTask in TD.posts | orderBy:sortType:sortReverse |filter:searchText'>
+          <td>{{ individualTask.task }}</td>
+          <td>{{ individualTask.date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="checkbox" ng-model="current" ng-click='TD.currentDate()'> {{ TD.current | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="checkbox" ng-model="complete" ng-click='TD.completedDate()'>{{ TD.complete | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="button" class="btn btn-default" value='delete' ng-model="delete" ng-click='TD.deletePost($index)'></td>
+        </tr>
+      </table>
+
+      <h1>Current Tasks</h1>
+      <table class="table table-striped">
+        <tr>
+          <td><a href="#" ng-click="sortType = 'task'; sortReverse = !sortReverse">Task
+            <span ng-show="sortType == 'task' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'task' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse">Date
+            <span ng-show="sortType == 'date' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'date' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'current'; sortReverse = !sortReverse">Current Task
+            <span ng-show="sortType == 'current' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'current' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'complete'; sortReverse = !sortReverse">Completed Task
+            <span ng-show="sortType == 'complete' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'complete' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td>Delete</td>
+        </tr>
+        <tr ng-repeat='individualTask in TD.posts | orderBy:sortType:sortReverse |filter:searchText'>
+          <td>{{ individualTask.task }}</td>
+          <td>{{ individualTask.date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="checkbox" ng-model="current" ng-click='TD.currentDate()'> {{ TD.current | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="checkbox" ng-model="complete" ng-click='TD.completedDate()'>{{ TD.complete | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+          <td><input type="button" class="btn btn-default" value='delete' ng-model="delete" ng-click='TD.deletePost($index)'></td>
+        </tr>
+      </table>
+
+      <h1>Completed Tasks</h1>
+      </form>
+    </div>
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+    <script src='app.js'></script>
+    <script src='toDoController.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
