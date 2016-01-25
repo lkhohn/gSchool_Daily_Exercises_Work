@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='angularCustomFilters'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <ul class="nav nav-pills">
+            <li role="presentation" class="active"><a href="#/">Home</a></li>
+            <li role="presentation"><a href="#/projects">Projects</a></li>
+            <li role="presentation"><a href="#/bio">Bio</a></li>
+            <li role="presentation"><a href="#/resume">Resume</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <h2>Routes</h2>
+    <h3><a href="#/">Index</a></h3>
+    <h3><a href="#/main">Main Page</a></h3>
+    <h3><a href="#/dogs">Dogs</a></h3>
+
+    <div ng-view>
+    </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.4.8/angular-route.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/controllers/mainController.js"></script>
+    <script src="/js/routes/routes.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
