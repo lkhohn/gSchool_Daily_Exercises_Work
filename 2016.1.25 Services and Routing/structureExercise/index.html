@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+      .has-error{
+        border: solid 1px red;
+      }
+      .has-success{
+        border: solid 1px green;
+      }
+    </style>
+  </head>
+
+  <body  ng-app="app" ng-controller="BlueItController as BC">
+
+
+
+    <!-- this is a random comment -->
+    <!-- GO BRONCOS!!!! -->
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">BlueIT</a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="" ng-click="checked = true">Submit a post</a></li>
+            <!-- <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">votes</a></li>
+                <li><a href="#">title</a></li>
+                <li><a href="#">author</a></li>
+                <li><a href="#">description</a></li>
+                <li><a href="#">content</a></li>
+                <li><a href="#">date</a></li>
+              </ul>
+            </li> -->
+          </ul>
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+            </div>
+            <button type="submit" class="btn btn-default">Search</button>
+          </form>
+        </div>
+      </div>
+    </nav>
+
+
+    <div class='container'>
+      <h1>BlueIT</h1>
+        <form name="userForm" ng-show="checked">
+          <div class="form-group" ng-class="{'has-error': userForm.title.$invalid && userForm.title.$dirty, 'has-success': userForm.title.$valid && userForm.title.$dirty }">
+            <label for="title">Title: </label>
+            <input type="text"
+            class="form-control"
+            name="title"
+            placeholder="Title"
+            ng-model='BC.title'
+            ng-minlength='2'
+            ng-maxlength='10'
+            required>
+            <div class='help-block' ng-messages="userForm.title.$error" style="color:red" role="alert" ng-show="userForm.title.$dirty">
+              <div ng-message="required">You did not enter a field</div>
+              <div ng-message="minlength">Your field is too short</div>
+              <div ng-message="maxlength">Your field is too long</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.author.$invalid && userForm.author.$dirty, 'has-success': userForm.author.$valid && userForm.author.$dirty}">
+            <label for="author">Author: </label>
+            <input type="text"
+            class="form-control"
+            name="author"
+            placeholder="Author"
+            ng-model="BC.author"
+            ng-minlength='2'
+            ng-maxlength='10'
+            required>
+            <div class='help-block' ng-messages="userForm.author.$error" style="color:red" role="alert" ng-show="userForm.author.$dirty">
+              <div ng-message="required">You did not enter a field</div>
+              <div ng-message="minlength">Your field is too short</div>
+              <div ng-message="maxlength">Your field is too long</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.description.$invalid && userForm.description.$dirty, 'has-success': userForm.description.$valid && userForm.description.$dirty}">
+            <label for="description">Description: </label>
+            <input type="text"
+            class="form-control"
+            name="description"
+            placeholder="Description"
+            ng-model="BC.description"
+            ng-minlength='2'
+            ng-maxlength='10'
+            required>
+            <div class='help-block' ng-messages="userForm.description.$error" style="color:red" role="alert" ng-show="userForm.description.$dirty">
+              <div ng-message="required">You did not enter a field</div>
+              <div ng-message="minlength">Your field is too short</div>
+              <div ng-message="maxlength">Your field is too long</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.content.$invalid && userForm.content.$dirty, 'has-success': userForm.content.$valid && userForm.content.$dirty}">
+            <label for="content">Content: </label>
+            <input type="text"
+            class="form-control"
+            name="content"
+            placeholder="Content"
+            ng-model="BC.content"
+            ng-minlength='2'
+            ng-maxlength='10'
+            required>
+            <div class='help-block' ng-messages="userForm.content.$error" style="color:red" role="alert" ng-show="userForm.content.$dirty">
+              <div ng-message="required">You did not enter a field</div>
+              <div ng-message="minlength">Your field is too short</div>
+              <div ng-message="maxlength">Your field is too long</div>
+            </div>
+          </div>
+          <div class="form-group" ng-class="{'has-error': userForm.comment.$invalid && userForm.comment.$dirty, 'has-success': userForm.comment.$valid && userForm.comment.$dirty}">
+            <label for="comment">Comment: </label>
+            <input type="text"
+            class="form-control"
+            name="comment"
+            placeholder="Comment"
+            ng-model="BC.comment"
+            ng-maxlength='1000'>
+            <div class='help-block' ng-messages="userForm.comment.$error" style="color:red" role="alert" ng-show="userForm.comment.$dirty">
+              <div ng-message="maxlength">Your field is too long</div>
+            </div>
+          </div>
+          <input type="button" class="btn btn-default" value="Submit" ng-click="BC.addPost(); userForm.title.$setPristine(); userForm.author.$setPristine(); userForm.description.$setPristine(); userForm.content.$setPristine(); userForm.comment.$setPristine()" ng-disabled="!userForm.$valid">
+
+          <div class="form-group">
+            <label for="content">Search: </label>
+            <input type="text" class="form-control" placeholder="Search" ng-model="searchText">
+          </div>
+          <input type="button" class="btn btn-default" value="Search">
+
+    </form>
+    <table class="table table-striped">
+      <tr>
+        <td><a href="#" ng-click="sortType = 'votes'; sortReverse = !sortReverse">Votes
+          <span ng-show="sortType == 'votes' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'votes' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+        <td><a href="#" ng-click="sortType = 'title'; sortReverse = !sortReverse">Title
+          <span ng-show="sortType == 'title' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'title' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+        <td><a href="#" ng-click="sortType = 'author'; sortReverse = !sortReverse">Author
+          <span ng-show="sortType == 'author' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'author' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+        <td><a href="#" ng-click="sortType = 'description'; sortReverse = !sortReverse">Description
+          <span ng-show="sortType == 'description' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'description' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+        <td><a href="#" ng-click="sortType = 'content'; sortReverse = !sortReverse">Content
+          <span ng-show="sortType == 'content' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'content' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+        <td><a href="#" ng-click="sortType = 'date'; sortReverse = !sortReverse">Date
+          <span ng-show="sortType == 'date' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+          <span ng-show="sortType == 'date' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+          <td><a href="#" ng-click="sortType = 'comment'; sortReverse = !sortReverse">Comments
+            <span ng-show="sortType == 'comment' && !sortReverse" class="glyphicon glyphicon-chevron-up"></span>
+            <span ng-show="sortType == 'comment' && sortReverse" class="glyphicon glyphicon-chevron-down"></span></a></td>
+      </tr>
+      <tr ng-repeat='individualPost in BC.posts | orderBy:sortType:sortReverse |filter:searchText'>
+        <td>
+          <button type='button' class="btn btn-default btn-lg glyphicon glyphicon-arrow-up" ng-click="BC.upVote()" ></button>
+          <button type='button' class="btn btn-default btn-lg glyphicon glyphicon-arrow-down" ng-click="BC.downVote()"></button>
+          {{ BC.vote }}</td>
+        <td>{{ individualPost.title }}</td>
+        <td>{{ individualPost.author }}</td>
+        <td>{{ individualPost.description }}</td>
+        <td>{{ individualPost.content }}</td>
+        <td>{{ individualPost.date | date:"MM/dd/yyyy 'at' h:mma"}}</td>
+        <td><a href="" ng-click="select = true">Comments</a></td>
+        <td ng-show="select">{{ individualPost.comment }}</td>
+        <td ng-click='submit = true'><button type='button' class='btn btn-default btn-lg'>Submit a comment</button></td>
+        <td ng-show='submit'><input type='text' placeholder='comment'><button type='button' class='btn btn-default btn-lg' ng-click="BC.addComment()">Submit</button></td>
+
+      </tr>
+    </table>
+
+<!-- ToDo: -->
+<!-- add in pictures -->
+<!-- add in comments -->
+
+
+
+
+        <!-- <div>
+          <h4>Capitalize Letters with Filter</h4>
+          <input type='text' ng-model='words'>
+            {{ words | upper }}
+        </div> -->
+
+        <div>
+          <h4>Capitalize Specific Letters with Filter</h4>
+          <input type='text' ng-model='words'>
+          <input type='text' ng-model='newWord'>
+            <!-- {{ words | upper:'qwerty' }} -->
+            {{ words | upper:newWord }}
+        </div>
+
+        <div>
+          <h4>Snake_case to Kebab-Case</h4>
+          <input type='text' ng-model='snakeCaseWords'>
+            {{ snakeCaseWords | kebabCase }}
+        </div>
+
+        <div>
+          <h4>Snake_case & Kebab-Case to Camel Case</h4>
+          <input type='text' ng-model='caseWords'>
+            {{ caseWords | camelCase }}
+        </div>
+
+        <div>
+          <h4>Redact Word</h4>
+          <input type='text' ng-model='redactWord'>
+          <p>{{ redactWord | redact }}.</p>
+        </div>
+
+    </div> <!--container div -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+    <script src='/js/app.js'></script>
+    <script src='/js/controllers/blueItController.js'></script>
+    <script src='/js/filters/filterOne.js'></script>
+    <script src='/js/filters/filterTwo.js'></script>
+    <script src='/js/filters/filterThree.js'></script>
+    <script src='/js/filters/filterFour.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  </body>
+</html>
