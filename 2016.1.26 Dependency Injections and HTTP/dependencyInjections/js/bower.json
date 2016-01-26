@@ -1,0 +1,21 @@
+{
+  "name": "js",
+  "homepage": "https://github.com/lkhohn/gSchool_Daily_Exercises_Work",
+  "authors": [
+    "LKHohn <lkhohn@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap-colorpicker": "~3.0.23"
+  }
+}
