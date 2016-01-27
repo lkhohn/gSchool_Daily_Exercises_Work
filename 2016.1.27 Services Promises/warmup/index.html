@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+      .has-error{
+        border: solid 1px red;
+      }
+      .has-success{
+        border: solid 1px green;
+      }
+    </style>
+
+
+  </head>
+  <body ng-controller='MainController as MC'>
+    <div class='container'>
+      <h1>Form</h1>
+      <form name='userForm'>
+        <div class="form-group" ng-class="{'has-error': userForm.fullName.$invalid && userForm.fullName.$dirty, 'has-success': userForm.fullName.$valid && userForm.fullName.$dirty }">
+          <label for='fullName'>Full Name</label>
+          <input type="text" class="form-control" name='fullName' ng-model='MC.fullName' required>
+          <div class='help-block' ng-messages="userForm.fullName.$error" style="color:red" role="alert" ng-show="userForm.fullName.$dirty">
+            <div ng-message="required">You did not enter a field</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.username.$invalid && userForm.username.$dirty, 'has-success': userForm.username.$valid && userForm.username.$dirty }">
+          <label for='username'>Username</label>
+          <input type="text" class="form-control" name='username' ng-model='MC.username' ng-minlength='6' required>
+          <div class='help-block' ng-messages="userForm.username.$error" style="color:red" role="alert" ng-show="userForm.username.$dirty">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && userForm.email.$dirty, 'has-success': userForm.email.$valid && userForm.email.$dirty }">
+          <label for='email'>Email</label>
+          <input type="email" class="form-control" name='email' ng-model='MC.email' required>
+          <div class='help-block' ng-messages="userForm.email.$error" style="color:red" role="alert" ng-show="userForm.email.$dirty">
+            <div ng-message="required">You did not enter a field</div>
+          </div>
+        </div>
+        <div class="form-group" ng-class="{'has-error': userForm.age.$invalid && userForm.age.$dirty, 'has-success': userForm.age.$valid && userForm.age.$dirty }">
+          <label for='age'>Age</label>
+          <input type="number" class="form-control" name='age' ng-model='MC.age' min='0' required>
+          <div class='help-block' ng-messages="userForm.age.$error" style="color:red" role="alert" ng-show="userForm.age.$dirty">
+            <div ng-message="required">You did not enter a field</div>
+            <div ng-message="minlength">Your field is too short</div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-default" ng-disabled='!userForm.$valid' ng-click='MC.success()'>Submit</button>
+      </form>
+    </div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+    <script src="app.js"></script>
+    <script src="mainController.js"></script>
+  </body>
+</html>
