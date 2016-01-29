@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/style/style.css" media="screen" title="no title" charset="utf-8">
+
+  </head>
+  <body ng-controller="MainController as MC">
+    <div class='container'>
+
+    <div class="jumbotron">
+      <h1>Welcome to NEAP Tea</h1>
+    </div>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav nav-pills">
+          <li role="presentation" class="active"><a href="#">Home</a></li>
+          <li role="presentation"><a href="#">About</a></li>
+          <li role="presentation"><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+
+
+    <label>Select by category: </label>
+    <select class="form-control" ng-model='searchCategory'>
+      <option></option>
+      <option value='cold'>cold</option>
+      <option value='warm'>warm</option>
+      <option value='hot'>hot</option>
+      <option value='winter'>winter</option>
+      <option value='spring'>spring</option>
+      <option value='summer'>summer</option>
+      <option value='lucid'>lucid</option>
+      <option value='dark'>dark</option>
+      <option value='dry'>dry</option>
+      <option value='awesome'>awesome</option>
+    </select>
+
+    <label>Search by name: </label>
+    <input type="text" class="form-control" placeholder="Search" ng-model='searchText'>
+
+    <table class="table table-striped">
+      <tr>
+        <td>Tea</td>
+        <td>Information</td>
+      </tr>
+      <tr ng-repeat='individualTea in MC.teaInventory | filter:{name:searchText} | filter: searchCategory'>
+        <td><img ng-src='{{ individualTea.imageUrl }}'/></td>
+        <td>
+          <ul>
+            <li>{{ individualTea.name }}</li>
+            <li>Price: {{ individualTea.price }}</li>
+            <li>Caffeine Scale: {{ individualTea.caffeineScale }}</li>
+            <li>Ingredients: {{ individualTea.ingredients }}</li>
+            <li>Rating: {{ individualTea.rating }}</li>
+            <li>In Stock? {{ individualTea.inStock}}</li>
+            <li>Categories: </li>
+              <ul ng-repeat='category in individualTea.categories'>
+                <li> {{ category }}</li>
+              </ul>
+          </ul>
+        </td>
+      </tr>
+    </table>
+
+    </div> <!--container -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/mainController.js"></script>
+    <script src="/js/directives.js"></script>
+    <script src="/js/services.js"></script>
+    <script src="/js/routes.js"></script>
+  </body>
+</html>
