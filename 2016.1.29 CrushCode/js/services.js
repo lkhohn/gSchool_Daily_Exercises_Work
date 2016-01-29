@@ -1,5 +1,27 @@
 angular.module('app')
 .service('teaService', function(){
+  var vm = this;
+
+  this.checkoutInformation = function(item, quantity){
+    vm.cartTotalItem = [];
+
+    var checkoutItem = {
+      name: item.name,
+      price: item.price,
+      quantity: quantity
+    };
+    vm.cartTotalItem.push(checkoutItem);
+    console.log(vm.cartTotalItem)
+  };
+
+  this.total = function() {
+      var total = 0;
+      angular.forEach(cartTotalItem.checkoutItem, function(checkoutItem) {
+          total += checkoutItem.quantity * checkoutItem.price;
+      });
+      return total;
+  };
+
 
   this.teaInventoryData = function(){
     return ([
