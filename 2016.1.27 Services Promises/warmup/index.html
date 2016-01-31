@@ -23,6 +23,7 @@
     <div class='container'>
       <h1>Form</h1>
       <form name='userForm'>
+
         <div class="form-group" ng-class="{'has-error': userForm.fullName.$invalid && userForm.fullName.$dirty, 'has-success': userForm.fullName.$valid && userForm.fullName.$dirty }">
           <label for='fullName'>Full Name</label>
           <input type="text" class="form-control" name='fullName' ng-model='MC.fullName' required>
@@ -30,6 +31,7 @@
             <div ng-message="required">You did not enter a field</div>
           </div>
         </div>
+
         <div class="form-group" ng-class="{'has-error': userForm.username.$invalid && userForm.username.$dirty, 'has-success': userForm.username.$valid && userForm.username.$dirty }">
           <label for='username'>Username</label>
           <input type="text" class="form-control" name='username' ng-model='MC.username' ng-minlength='6' required>
@@ -38,13 +40,16 @@
             <div ng-message="minlength">Your field is too short</div>
           </div>
         </div>
+
         <div class="form-group" ng-class="{'has-error': userForm.email.$invalid && userForm.email.$dirty, 'has-success': userForm.email.$valid && userForm.email.$dirty }">
           <label for='email'>Email</label>
-          <input type="email" class="form-control" name='email' ng-model='MC.email' required>
+          <input type="text" class="form-control" name='email' ng-model='MC.email' ng-pattern="MC.regex" required>
           <div class='help-block' ng-messages="userForm.email.$error" style="color:red" role="alert" ng-show="userForm.email.$dirty">
             <div ng-message="required">You did not enter a field</div>
+            <div ng-message="pattern">You did not enter a valid email</div>
           </div>
         </div>
+
         <div class="form-group" ng-class="{'has-error': userForm.age.$invalid && userForm.age.$dirty, 'has-success': userForm.age.$valid && userForm.age.$dirty }">
           <label for='age'>Age</label>
           <input type="number" class="form-control" name='age' ng-model='MC.age' min='0' required>
@@ -53,7 +58,9 @@
             <div ng-message="minlength">Your field is too short</div>
           </div>
         </div>
+
         <button type="submit" class="btn btn-default" ng-disabled='!userForm.$valid' ng-click='MC.success()'>Submit</button>
+
       </form>
     </div>
 

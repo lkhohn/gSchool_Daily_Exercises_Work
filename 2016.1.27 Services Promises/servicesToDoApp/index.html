@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" ng-app='app'>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <style>
+      .has-error{
+        border: solid 1px red;
+      }
+      .has-success{
+        border: solid 1px green;
+      }
+    </style>
+
+  </head>
+  <body ng-controller='MainController as MC'>
+    <div class='container'>
+
+
+    <h1>Add a to do list</h1>
+    <form name='userForm'>
+      <div class="form-group" ng-class="{'has-error': userForm.task.$invalid && userForm.task.$dirty, 'has-success': userForm.task.$valid && userForm.task.$dirty}">
+        <label for="task">Task</label>
+        <input type="text" class="form-control" name='task' ng-model='MC.task' ng-minlength='1' required>
+      </div>
+      <button type="submit" class="btn btn-default" ng-click='MC.addTask(); userForm.task.$setPristine()' ng-disabled='!userForm.$valid' >Submit</button>
+    </form>
+
+    <h2>All your tasks</h2>
+    <ul>
+      <li ng-repeat='individualTask in MC.posts'>
+        {{ individualTask.task }}
+      </li>
+    </ul>
+
+
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="/js/mainController.js"></script>
+    <script src="/js/services.js"></script>
+  </body>
+</html>
