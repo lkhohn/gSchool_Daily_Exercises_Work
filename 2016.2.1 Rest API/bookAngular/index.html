@@ -9,32 +9,38 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+    <style media="screen">
+      img {
+        width:25px;
+        height:25px;
+      }
+    </style>
 
   </head>
+
   <body ng-controller='MainController as MC'>
+    <h1>Book App</h1>
     <div class='container'>
-      <h1>Books</h1>
-      <table class="table table-striped">
-        <tr>
-          <td>Image Url</td>
-          <td>Book Name</td>
-          <td>Author</td>
-          <td>Book Description</td>
-        </tr>
-        <tr ng-repeat='individualData in MC.data.data'>
-          <td><img src={{individualData.imageUrl}}></td>
-          <td><a href='/{{individualData.id}}'>{{individualData.bookName}}</a></td>
-          <td>{{individualData.author}}</td>
-          <td>{{individualData.bookDescription}}</td>
-        </tr>
-      </table>
+      <form name='addBookForm'>
+        <div class="form-group">
+          <label for="bookName">Book Name</label>
+          <input type="text" class="form-control" name='bookName' ng-model='newBook.bookName'>
+        </div>
+        <div class="form-group">
+          <label for="author">Author</label>
+          <input type="text" class="form-control" name='author' ng-model='newBook.author'>
+        </div>
+        <div class="form-group">
+          <label for="bookDescription">Book Description</label>
+          <input type="text" class="form-control" name='bookDescription' ng-model='newBook.bookDescription'>
+        </div>
+        <input type="button" value='Submit' class="btn btn-default" ng-click='MC.addBook(newBook)'></input>
+      </form>
 
-      <div ng-view></div>
+      <list-books></list-books>
+    </div>
 
 
-
-      </div> <!-- container -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>

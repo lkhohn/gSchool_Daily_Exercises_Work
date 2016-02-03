@@ -1,6 +1,8 @@
 angular.module('app')
 .service('bookService', ['$http', '$q', bookService])
-.service('individualBookService', ['$http', '$q', individualBookService]);
+.service('addBookService', ['$http', '$q', addBookService]);
+.service('bookDetailsService', ['$http', '$q', bookDetailsService]);
+
 
 function bookService($http, $q){
   return {
@@ -17,13 +19,26 @@ function bookService($http, $q){
   };
 }
 
-
-function individualBookService($http, $q){
+function addBookService($http, $q){
   return {
-    getIndividualBooks: function(id){
+    addBook: function(newBook){
       return $q(function(resolve, reject){
+        $http.post('http://localhost:3000/api/books', newBook)
+        .then(function success(response){
+          resolve(response);
+        }, function error(response){
+          console.error(response);
+        });
+      });
+    }
+  };
+}
 
-        $http.get('http://localhost:3000/api/books/' + id)
+function bookDetailsService($http, $q){
+  return{
+    bookDetails: function(bookDetails){
+      return $q(function(resolve, reject){
+        $http.get('http://localhost:3000/api/books', bookDetails)
         .then(function success(response){
           resolve(response);
         }, function error(response){

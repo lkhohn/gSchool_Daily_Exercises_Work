@@ -1,8 +1,10 @@
 angular.module('app')
-.controller('MainController', ['$scope', '$http', 'bookService', 'individualBookService', MainController]);
+.controller('MainController', ['$scope', '$http', 'bookService','addBookService', MainController]);
 
-function MainController($scope, $http, bookService, individualBookService){
+function MainController($scope, $http, bookService, addBookService){
   var vm = this;
+  vm.addBook = addBook;
+  vm.bookDetails = bookDetails;
 
   function getBooks(){
     bookService.getBooks().then(function(bookData){
@@ -10,11 +12,17 @@ function MainController($scope, $http, bookService, individualBookService){
     });
   }
 
-  vm.getIndividualBooks = function(id){
-    individualBookService.getIndividualBooks(id).then(function(bookData){
-      vm.individualBookData = bookData;
+  function addBook(newBook){
+    addBookService.addBook(newBook).then(function(response){
+      getBooks();
     });
-  };
+}
+
+  function bookDetails(){
+    bookDetailsService.bookDetails(bookDetails).then(function(){
+      
+    })
+  }
 
 
   function init(){
