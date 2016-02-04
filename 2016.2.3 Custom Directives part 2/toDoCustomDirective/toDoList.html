@@ -1,0 +1,13 @@
+<form>
+  <div class="form-group">
+    <label for="schoolWork">School Work</label>
+    <input type="text" class="form-control" ng-model='newTask'>
+  </div>
+
+    <button type="submit" class="btn btn-default" ng-click='addTask(newTask)'>Submit</button>
+
+</form>
+
+<div ng-repeat='task in tasks track by $index'>
+  {{ task }}
+</div>

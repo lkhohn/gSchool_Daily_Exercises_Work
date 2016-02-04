@@ -36,3 +36,4 @@ function parser(input){
 }
 console.log(parser('({[]})'));
 console.log(parser('({[}])'));
+console.log(parser('({[]})()'));

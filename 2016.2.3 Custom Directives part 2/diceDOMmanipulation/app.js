@@ -37,11 +37,11 @@ app.directive('diceDirective', function() {
     // link: function(scope, element, attrs) {
       // scope.num = parseInt(scope.num, 10);
       // element.on('click', function() {
-        // scope.$apply(function(){
+      //   scope.$apply(function(){
       //     console.log(scope.num);
-          // scope.num = scope.rollDice();
+      //     scope.num = scope.rollDice();
       //   });
-        // element.children.text(scope.num);
+      //   element.children.text(scope.num);
       // });
 //
 //       /// or you can remove this from controller and put in the link section
