@@ -1,0 +1,48 @@
+.navHeaderSection {
+    background-image:url(https://images.unsplash.com/photo-1414358154612-ae3d3c120004?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=b14e6ae46b524f1868fcba47a797c9c0);
+    background-position:center;
+    background-size:100% auto;
+}
+
+.navbar {
+   background-color: transparent;
+   background:rgba(0,0,0,0.5);
+   border-color: transparent;
+}
+
+#navBarBrandTitle {
+   color: white;
+   font-size:2em;
+   height:2em;
+}
+
+.jumbotron {
+  background:rgba(0,0,0,0);
+}
+
+#homePageTitleHeader {
+  color: white;
+  text-align: center;
+  margin-top:1em;
+}
+
+#homePageOrderButton {
+  color: white;
+  background-color:#84BE6A;
+  border: none;
+  margin-top:10em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+ }
+
+.thumbnail {
+  background:rgba(0,0,0,0);
+  border: none;
+}
+
+.panel-footer {
+  color: white;
+  background-color: #000;
+  text-align:center;
+}
