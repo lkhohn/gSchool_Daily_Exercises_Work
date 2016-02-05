@@ -162,3 +162,31 @@ var squares = document.querySelectorAll('div');
 for (var i = 0; i < squares.length; i++) {
     squares[i].style.backgroundColor = getRandomColor();
 }
+
+
+
+
+
+var headerClicks = document.createElement('article');
+var newHeaderClicks = headerClicks.innerText = 'Click Events';
+document.body.appendChild(headerClicks);
+headerClicks.setAttribute('style', 'display:block');
+
+
+$( "#target" ).click(function() {
+  alert( "Handler for .click() called." );
+});
+
+$( "#other" ).click(function() {
+  $( "#target" ).click();
+});
+
+$('#test').click(function(){
+  console.log('test click');
+  if(body.style.backgroundColor !== 'red'){
+    $('body').css('background-color', 'red');
+  }
+  else{
+  $('body').css('background-color', '');
+  }
+});
