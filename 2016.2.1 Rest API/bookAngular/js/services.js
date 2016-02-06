@@ -1,6 +1,6 @@
 angular.module('app')
 .service('bookService', ['$http', '$q', bookService])
-.service('addBookService', ['$http', '$q', addBookService]);
+.service('addBookService', ['$http', '$q', addBookService])
 .service('bookDetailsService', ['$http', '$q', bookDetailsService]);
 
 
