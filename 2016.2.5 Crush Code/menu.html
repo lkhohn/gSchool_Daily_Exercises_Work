@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gEats Menu</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+
+  </head>
+  <body>
+
+  <!-- nav bar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html" id='navBarBrandTitle'>gEats
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class='container'>
+
+      <!-- left side -->
+      <div class='col-md-7'>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Hamburgers</h3>
+          </div>
+          <div class="panel-body" id='menuItems'>
+            <table class="table" id='menuItemsTableHamburger'></table>
+          </div>
+
+          <div class="panel-heading">
+            <h3 class="panel-title">Pizza</h3>
+          </div>
+          <div class="panel-body" id='menuItems'>
+            <table class="table" id='menuItemsTablePizza'></table>
+          </div>
+        </div>
+
+        <!-- quantity add to cart section -->
+        <div class='col-md-4'>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Quantity</h3>
+            </div>
+            <div class="panel-body">
+            </div>
+          </div>
+        </div>
+        <div class='col-md-8'>
+          <input class="btn btn-primary btn-lg" type="button" value="Add Item">
+        </div>
+
+        <!-- user form -->
+        <form class='col-md-12'>
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" class="form-control" placeholder="Name" name="name" id="name">
+          <label class="error" for="name" id="name_error">This field is required.</label>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" class="form-control" placeholder="Phone Number" name="phoneNumber" id="phoneNumber">
+          <label class="error" for="name" id="phoneNumber_error">This field is required.</label>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" class="form-control" placeholder="Address" name="address" id="address">
+          <label class="error" for="name" id="address_error">This field is required.</label>
+        </div>
+        <a href='#'><button type="button" class="btn btn-primary btn-lg btn-block" id='menuOrderButton'>Deliver It!</button></a>
+      </form>
+
+
+
+      </div> <!-- end of left side -->
+
+      <!-- right side -->
+      <div class='col-md-5'>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title">Cart</h3>
+          </div>
+          <div class="panel-body" id="shoppingCart">
+            <h4>Subtotal:</h4>
+            <h4>Tax:</h4>
+            <h3>Total:</h3>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+    </div> <!-- container -->
+
+  <!-- footer -->
+    <footer>
+      <div class="panel panel-default">
+        <div class="panel-footer">Galvanize 2016 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Fort Collins, CO</div>
+      </div>
+    </footer>
+
+
+
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="app.js"></script>
+
+  </body>
+</html>
