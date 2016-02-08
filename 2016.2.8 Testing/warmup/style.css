@@ -1,0 +1,51 @@
+.navBar {
+  display: inline-block;
+}
+
+#navRight {
+  float:right;
+  margin: 20px 20px 0 0;
+}
+
+.mainSection {
+  padding-top:40px;
+  padding-left:30px;
+}
+.colLeft {
+  float:left;
+  margin-left:60px;
+  margin-right:60px;
+}
+
+.mainSectionList {
+  margin: 20px 20px 0 0;
+}
+
+.mainSectionButtonList {
+  margin: 20px 20px 0 0;
+  display: inline-block;
+
+}
+
+.colRight {
+  float:left;
+  margin-left:100px;
+
+}
+
+#thumbnail {
+  width:1000px;
+}
+
+#colLeftThumbnail{
+  float:left;
+  padding-left:100px;
+}
+#colMidThumbail {
+  float: left;
+  padding-right:100px;
+  padding-left:100px;
+}
+#colRightThumbnail {
+  float:left;
+}
