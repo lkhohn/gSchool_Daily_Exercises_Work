@@ -1,7 +1,7 @@
-<form>
+<!-- <form>
   <div class="form-group">
     <label for="schoolWork">School Work</label>
-    <input type="text" class="form-control" ng-model='newTask'>
+    <input type="text" class="form-control" ng-model='addTask(newTask)'>
   </div>
 
     <button type="submit" class="btn btn-default" ng-click='addTask(newTask)'>Submit</button>
@@ -9,5 +9,24 @@
 </form>
 
 <div ng-repeat='task in tasks track by $index'>
+
   {{ task }}
+  <edit-directive list-item='{{task}}'></edit-directive>
+
+</div> -->
+
+<div class="form-group">
+  <label for="task"></label>
+  <input ng-model='taskInput' type="text" class="form-control" id="task" placeholder="">
+  <input ng-click='addToList(taskInput)' class='btn btn-success' value='Add to list'/>
 </div>
+<table ng-repeat='li in list' class='table'>
+  <tr>
+    <td ng-hide='editData'>
+      {{li}}
+    </td>
+    <td>
+      <sw-item-update list-item='{{li}}'></sw-item-update>
+    </td>
+  </tr>
+</table>

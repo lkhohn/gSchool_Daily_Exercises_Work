@@ -1,1 +1,14 @@
-<input 
+<!-- <input ng-click='edit = true; editInput = task' ng-hide='edit' class='btn btn-warning' value='Edit'/>
+
+<div class='form-group' ng-show='edit' ng-model='edit'>
+  <input type='text' class='form-control' ng-model='editInput' name='editInput'/>
+  <button type='submit' class='btn btn-default' ng-click='edit(editItem)'>Edit</button>
+</div>
+ -->
+
+
+ <input ng-click='editData = true; editInput = li' ng-hide='editData' class='btn btn-warning' value='Edit'/>
+ <div ng-show="editData" ng-model='editData'>
+   <input ng-model="editInput" type="text" name="editInput"/>
+   <input ng-click="edit(editInput)" type="button" value="Submit" class='btn btn-success'/>
+ </div>
