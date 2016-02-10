@@ -1,4 +1,3 @@
-
 $.ajax({
   url: "https://galvanize-eats-api.herokuapp.com/menu",
   method: "GET",
@@ -37,6 +36,10 @@ $.ajax({
 // });
 // ('#menuItemsPizzaData'+[i]).click(function() {
 //   $('#menuItemsPizzaData'+[i]).clone().appendTo(shoppingCart);
+// })
+
+// $('td').click(function(){
+  // addClass('selected') -- then push whatever items have an class of selected to the second column
 // })
 
 function addItemsToCart(event, menuItemsHamburgerData, menuItemsPizzaData){
