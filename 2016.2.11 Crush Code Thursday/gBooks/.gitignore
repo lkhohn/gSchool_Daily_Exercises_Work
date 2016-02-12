@@ -30,3 +30,8 @@ node_modules
 npm-debug.log
 
 .env
+
+/node_modules
+npm-debug.log
+.DS_Store
+.env
