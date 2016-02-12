@@ -11,14 +11,20 @@ var knex = require('knex')({
 
 router.get('/', function(req, res, next){
     knex('books').select()
-      .innerJoin('author_book', 'books.book_id', 'author_book.book_id')
-      .innerJoin('authors', 'authors.author_id', 'author_book.author_id')
+      .leftJoin('author_book', 'books.book_id', 'author_book.book_id')
+      .leftJoin('authors', 'authors.author_id', 'author_book.author_id')
       .then(function(postDetails){
+        console.log(postDetails)
     res.render('books', {
       postDetails: postDetails
     });
   });
 });
+// SELECT DISTINCT ON (author_book.book_id) from books LEFT OUTER JOIN author_book ON books.book_id = author_book.book_id;
+// SELECT books.book_id, books.title, books.description, authors.author_id from books LEFT OUTER JOIN author_book ON books.book_id = author_book.book_id LEFT OUTER JOIN authors ON authors.author_id = author_book.book_id;
+// SELECT * from books LEFT OUTER JOIN author_book ON books.book_id = author_book.book_id LEFT OUTER JOIN authors ON authors.author_id = author_book.book_id;
+
+
 
 router.get('/newBook', function(req, res, next) {
   res.render('newBook');
