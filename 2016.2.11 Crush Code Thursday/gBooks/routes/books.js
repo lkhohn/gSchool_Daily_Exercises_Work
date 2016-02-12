@@ -31,20 +31,20 @@ router.post('/newBook', function(req, res, next) {
 });
 
 
-router.get('/:id', function (req, res, next) {
-  knex('books').where('id', req.params.id).first().then(function(result){
+router.get('/:book_id', function (req, res, next) {
+  knex('books').where('book_id', req.params.book_id).first().then(function(result){
     res.render('individualBook', { book: result });
   });
-})
+});
 
-router.get('/:id/editBook', function (req, res, next) {
-  knex('books').where('id', req.params.id).first().then(function(result){
+router.get('/:book_id/editBook', function (req, res, next) {
+  knex('books').where('book_id', req.params.book_id).first().then(function(result){
     res.render('editBook', { book: result });
   });
-})
+});
 
-router.post('/:id/editBook', function (req, res) {
-  knex('books').where('id', req.params.id).update({
+router.post('/:book_id/editBook', function (req, res) {
+  knex('books').where('book_id', req.params.book_id).update({
     title: req.body.title,
     description: req.body.description,
     coverimgurl: req.body.coverimgurl,
@@ -55,8 +55,8 @@ router.post('/:id/editBook', function (req, res) {
 });
 
 
-router.post('/:id/delete', function (req, res) {
-  knex('books').where('id', req.params.id).del()
+router.post('/:book_id/delete', function (req, res) {
+  knex('books').where('book_id', req.params.book_id).del()
   .then(function (result) {
     res.redirect('/books');
   });

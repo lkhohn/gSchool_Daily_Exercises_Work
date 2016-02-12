@@ -31,20 +31,20 @@ router.post('/newAuthor', function(req, res, next){
   });
 });
 
-router.get('/:id', function(req, res, next){
-  knex('authors').where('id', req.params.id).first().then(function(result){
+router.get('/:author_id', function(req, res, next){
+  knex('authors').where('author_id', req.params.author_id).first().then(function(result){
     res.render('individualAuthor', { author: result });
   });
 });
 
-router.get('/:id/editAuthor', function(req, res, next){
-  knex('authors').where('id', req.params.id).first().then(function(result){
+router.get('/:author_id/editAuthor', function(req, res, next){
+  knex('authors').where('author_id', req.params.author_id).first().then(function(result){
     res.render('editAuthor', { author: result});
   });
 });
 
-router.post('/:id/editAuthor', function(req, res, next){
-  knex('authors').where('id', req.params.id).update({
+router.post('/:author_id/editAuthor', function(req, res, next){
+  knex('authors').where('author_id', req.params.author_id).update({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     portraiturl: req.body.portraiturl,
@@ -55,8 +55,8 @@ router.post('/:id/editAuthor', function(req, res, next){
 });
 
 
-router.post('/:id/delete', function (req, res) {
-  knex('authors').where('id', req.params.id).del()
+router.post('/:author_id/delete', function (req, res) {
+  knex('authors').where('author_id', req.params.author_id).del()
   .then(function (result) {
     res.redirect('/authors');
   });
