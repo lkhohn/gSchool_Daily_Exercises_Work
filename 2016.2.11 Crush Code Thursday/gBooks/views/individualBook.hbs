@@ -1,0 +1,27 @@
+<div class='row'>
+  <div class='container'>
+      <div class="panel panel-default">
+          <div class='row' id="book">
+            <div class='col-md-4'>
+              <img src={{book.coverimgurl}}>
+            </div>
+            <div class='col-md-8'>
+              <h3>{{book.title}}
+                <div class="btn-group" role="group" aria-label="..." style="float:right">
+
+                  <button type="submit" class="btn btn-default"><a href="/books/{{book.id}}/editBook">Edit</a></button>
+                  <form action='/books/{{book.id}}/delete' method='post'>
+                    <button type="submit" class="btn btn-default">Delete</button>
+                  </form>
+
+
+                </div>
+              </h3>
+              <p>{{book.genre}}</p>
+              <p>{{book.description}}</p>
+            </div>
+          </div>
+
+      </div>
+  </div>
+</div>

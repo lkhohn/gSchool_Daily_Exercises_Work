@@ -1,0 +1,23 @@
+<div class='row'>
+  <div class='container'>
+      <button type="submit" class="btn btn-default"><a href='/authors/newAuthor'>Add an author</a></button>
+
+      <div class="panel panel-default">
+        {{#each postDetails}}
+          <div class='row' id="postDetails">
+            <div class='col-md-4'>
+              <img src={{this.portraiturl}}>
+            </div>
+            <div class='col-md-8'>
+              <h3><a href='/authors/{{this.id}}'>{{this.firstname}} {{ this.lastname}}</a>
+              </h3>
+              <p>{{this.biography}}</p>
+              <ul>
+                <li>{{this.books}}</li>
+              </ul>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+  </div>
+</div>

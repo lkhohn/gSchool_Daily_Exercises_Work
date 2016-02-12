@@ -1,0 +1,24 @@
+<div class='container'>
+  <form class="" action="/authors/{{author.id}}/editAuthor" method="post">
+    <div class="form-group">
+      <label for="firstname">First Name</label>
+      <input type="text" class="form-control" value="{{author.firstname}}" name="firstname" placeholder={{firstname}}>
+    </div>
+    <div class="form-group">
+      <label for="lastname">Last Name</label>
+      <input type="text" class="form-control" value="{{author.lastname}}" name="lastname" placeholder={{lastname}}>
+    </div>
+    <div class="form-group">
+      <label for="portraiturl">Portrait Url</label>
+      <input type="text" class="form-control" value="{{author.portraiturl}}" name="portraiturl" placeholder={{portraiturl}}>
+    </div>
+    <div class="form-group">
+      <label for="biography">Biography</label>
+      <input type="text" class="form-control" value="{{author.biography}}" name="biography" placeholder={{biography}}>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="cancel" class="btn btn-default">Cancel</button>
+
+  </form>
+</div>

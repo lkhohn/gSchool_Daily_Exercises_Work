@@ -1,0 +1,24 @@
+<div class='container'>
+  <form class="" action="/books/{{book.id}}/editBook" method="post">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" value="{{book.title}}" name="title" placeholder={{title}}>
+    </div>
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea type="text" class="form-control" rows="5" value="{{book.description}}" name="description" placeholder={{description}}></textarea>
+    </div>
+    <div class="form-group">
+      <label for="coverimgurl">Cover Img Url</label>
+      <input type="text" class="form-control" value="{{book.coverimgurl}}" name="coverimgurl" placeholder={{coverimgurl}}>
+    </div>
+    <div class="form-group">
+      <label for="genre">Genre</label>
+      <input type="text" class="form-control" value="{{book.genre}}" name="genre" placeholder={{genre}}>
+    </div>
+
+    <button type="submit" class="btn btn-default">Submit</button>
+    <button type="cancel" class="btn btn-default">Cancel</button>
+
+  </form>
+</div>
