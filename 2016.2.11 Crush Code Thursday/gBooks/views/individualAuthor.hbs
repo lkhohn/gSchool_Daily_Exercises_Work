@@ -8,15 +8,15 @@
             <div class='col-md-8'>
               <h3>{{author.firstname}} {{author.lastname}}
                 <div class="btn-group" role="group" aria-label="..." style="float:right">
-                  <button type="submit" class="btn btn-default"><a href="/authors/{{author.id}}/editAuthor">Edit</a></button>
-                  <form action='/authors/{{author.id}}/delete' method='post'>
+                  <button type="submit" class="btn btn-default"><a href="/authors/{{author.author_id}}/editAuthor">Edit</a></button>
+                  <form action='/authors/{{author.author_id}}/delete' method='post'>
                     <button type="submit" class="btn btn-default">Delete</button>
                   </form>
                 </div>
               </h3>
               <p>{{author.biography}}</p>
               <ul>
-                <li>{{author.books}}</li>
+                <li><a href='/books/{{author.book_id}}'>{{author.title}}</a></li>
               </ul>
             </div>
           </div>
