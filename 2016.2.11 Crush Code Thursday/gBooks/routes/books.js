@@ -14,7 +14,7 @@ router.get('/', function(req, res, next){
       .leftJoin('author_book', 'books.book_id', 'author_book.book_id')
       .leftJoin('authors', 'authors.author_id', 'author_book.author_id')
       .then(function(postDetails){
-        console.log(postDetails)
+        console.log(postDetails);
     res.render('books', {
       postDetails: postDetails
     });
@@ -30,16 +30,6 @@ router.get('/newBook', function(req, res, next) {
   res.render('newBook');
 });
 
-// router.post('/newBook', function(req, res, next) {
-//   knex('books').insert({
-//     title: req.body.title,
-//     description: req.body.description,
-//     coverimgurl: req.body.coverimgurl,
-//     genre: req.body.genre
-//   }).then(function(){
-//     res.redirect('/books');
-//   });
-// });
 
 router.post('/newBook', function(req, res, next) {
   knex('books').returning('book_id').insert({
@@ -78,7 +68,6 @@ router.get('/:book_id', function(req, res, next){
 });
 
 
-
 router.get('/:book_id/editBook', function (req, res, next) {
   knex('books').select()
   .innerJoin('author_book', 'books.book_id', 'author_book.book_id')
@@ -105,7 +94,6 @@ router.post('/:book_id/editBook', function (req, res) {
     });
   });
 });
-
 
 
 router.post('/:book_id/delete', function (req, res, next) {
