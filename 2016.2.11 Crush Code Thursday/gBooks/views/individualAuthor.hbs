@@ -1,12 +1,13 @@
 <div class='row'>
   <div class='container'>
       <div class="panel panel-default">
+
           <div class='row' id="author">
             <div class='col-md-4'>
               <img src={{author.portraiturl}}>
             </div>
             <div class='col-md-8'>
-              <h3>{{author.firstname}} {{author.lastname}}
+              <h3><a href="/authors/{{author.author_id}}">{{author.firstname}} {{author.lastname}}</a>
                 <div class="btn-group" role="group" aria-label="..." style="float:right">
                   <button type="submit" class="btn btn-default"><a href="/authors/{{author.author_id}}/editAuthor">Edit</a></button>
                   <form action='/authors/{{author.author_id}}/delete' method='post'>
