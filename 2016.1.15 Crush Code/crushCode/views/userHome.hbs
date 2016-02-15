@@ -1,7 +1,6 @@
 <div class='row'>
   <div class='container'>
-    <div class='col-md-2'></div>
-    <div class='col-md-8'>
+    <div class='col-md-10'>
       <div class="panel panel-default">
         <div class="panel-heading">BlueIt HOME</div>
         <table class="table" id="postDetails">
@@ -10,30 +9,34 @@
             <td>Title</td>
             <td>Content</td>
             <td>Category</td>
-            <td>User ID</td>
+            <td>Username</td>
+            <td>Edit</td>
+            <td>Delete</td>
           </tr>
+          {{#each postDetails}}
             <tr>
-              <td>{{id}}
+              <td><a href='/{{this.id}}'>{{this.id}}</a>
               </td>
-              <td>{{title}}
+              <td>{{this.title}}
               </td>
-              <td>{{content}}
+              <td>{{this.content}}
               </td>
-              <td>{{category}}
+              <td><a href='/{{this.category}}'>{{this.category}}</a>
               </td>
-              <td>{{user_id}}
+              <td>{{this.username}}
               </td>
+              {{#if sessionOwner}}
               <td><button type="submit" class="btn btn-default"><a href={{editLink}}>Edit</a></button>
               </td>
               <td>
                 <form class="" action='{{deleteLink}}' method='post'>
                 <button type="submit" class="btn btn-default"><a href={{deleteLink}}>Delete</a></button>
               </td>
+              {{/if}}
+              {{/each}}
             </tr>
         </table>
       </div>
-    </div>
-    <div class='col-md-2'>
     </div>
   </div>
 </div>

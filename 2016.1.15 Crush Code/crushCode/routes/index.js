@@ -10,28 +10,36 @@ var knex = require('knex')({
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  knex('posts').select().then(function(postDetails){
+  if(req.session.user){
+    res.redirect('/users/userHome');
+  } else {
+  knex('posts').select().innerJoin('users', 'posts.user_id', 'users.id').then(function(postDetails){
     res.render('index', {
       title: 'BlueIt',
       postDetails: postDetails,
       addPost: '/addPost'
         });
     });
+  }
 });
 
+// SELECT posts.user_id, users.username FROM posts INNER JOIN users ON (posts.user_id = users.id);
 
 /* POST create a new post */
 router.get('/addPost', function(req, res, next){
-  res.render('addPost');
+  if(req.session.user){
+    res.render('addPost');
+  } else {
+    res.redirect('/login');
+  }
 });
 
 router.post('/addPost', function(req, res, next){
   knex('posts').insert({
-    id: req.body.id,
     title: req.body.title,
     content: req.body.content,
     category: req.body.category,
-    user_id: req.body.user_id
+    user_id: req.session.user.id
   }).then(function(){
     res.redirect('/');
   });
@@ -86,7 +94,7 @@ router.get('/:id/editPost', function(req, res, next){
   });
 });
 
-router.post('/:id/editPost', function(req, res, next){
+router.put('/:id/editPost', function(req, res, next){
   knex('posts').where('id', req.params.id).update({
     id: req.body.id,
     title: req.body.title,

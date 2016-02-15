@@ -22,9 +22,13 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Home</a></li>
             <li><a href="/addPost">Add a post</a></li>
+              {{#if username}}
+            <li><a href="#">{{username}}</a></li>
+            <li><a href="/users/signout">Sign Out</a></li>
+              {{else}}
             <li><a href="/users/signup">Sign Up</a></li>
             <li><a href="/users/signin">Sign In</a></li>
-            <li><a href="/users/signout">Sign Out</a></li>
+              {{/if}}
           </ul>
         </div>
       </div>
