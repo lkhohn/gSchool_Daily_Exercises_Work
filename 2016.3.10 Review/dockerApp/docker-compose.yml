@@ -1,0 +1,20 @@
+nginx:
+  build: ./nginx
+  links:
+    - node1:express1
+    - node2:express2
+    - node3:express3
+  ports:
+    - "80:80"
+node1:
+  build: ./express1
+  ports:
+    - "3000"
+node2:
+  build: ./express2
+  ports:
+    - "3000"
+node3:
+  build: ./express3
+  ports:
+    - "3000"
