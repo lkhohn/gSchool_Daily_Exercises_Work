@@ -22,3 +22,9 @@ angular.module('angularCustomFilters')
       controller: 'resumeController as RC'
     })
 })
+
+
+/// use the route at the end of everything. This is incase there was an error:
+// .otherwise ({
+//   redirectTo:'views/main.html'
+// })

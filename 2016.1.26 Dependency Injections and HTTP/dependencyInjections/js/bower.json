@@ -16,6 +16,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular-bootstrap-colorpicker": "~3.0.23"
+    "angular-bootstrap-colorpicker": "~3.0.23",
+    "angular-bootstrap-calendar": "~0.18.3"
   }
 }

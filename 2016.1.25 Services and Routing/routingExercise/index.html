@@ -7,17 +7,21 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-
+  <style>
+  .isActive {
+    color:red;
+  }
+  </style>
   </head>
   <body>
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
           <ul class="nav nav-pills">
-            <li role="presentation" class="active"><a href="#/">Home</a></li>
-            <li role="presentation"><a href="#/projects">Projects</a></li>
-            <li role="presentation"><a href="#/bio">Bio</a></li>
-            <li role="presentation"><a href="#/resume">Resume</a></li>
+            <li role="presentation" ng-class="{ active: isActive('#/')}"><a href="#/">Home</a></li>
+            <li role="presentation" ng-class="{ active: isActive('#/projects')}"><a href="#/projects">Projects</a></li>
+            <li role="presentation" ng-class="{ active: isActive('#/bio')}"><a href="#/bio">Bio</a></li>
+            <li role="presentation" ng-class="{ active: isActive('#/resume')}"><a href="#/resume">Resume</a></li>
           </ul>
         </div>
       </div>

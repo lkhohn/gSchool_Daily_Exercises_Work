@@ -33,3 +33,11 @@ function resumeController($scope){
   var vm = this;
   vm.pageTitle='Resume'
 }
+
+// angular.module("angularCustomFilters")
+// .controller('isActive', ['$scope', isActive]);
+// function isActive($scope, viewLocation){
+//   console.log('hey')
+//     var vm = this;
+//     vm.viewLocation == $location.path()
+// }

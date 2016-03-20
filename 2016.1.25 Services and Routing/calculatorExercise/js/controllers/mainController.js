@@ -5,7 +5,6 @@ function mainController($scope){
   vm.pageTitle = "Calculator";
 }
 
-
 angular.module('app')
 .controller('addController', ['$scope', '$routeParams', addController]);
 function addController($scope, $routeParams){
