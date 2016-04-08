@@ -33,17 +33,6 @@ BinTree.prototype.getHighest = function(node){
   return node.value;
 };
 
-// BinTree.prototype.getSize = function(node){
-//   if(!node){
-//     return 0;
-//   }
-//   else {
-//   var leftSize = this.getSize(node.left);
-//   var rightSize = this.getSize(node.right);
-//   }
-//   return (leftSize + rightSize) - 1;
-// };
-
 
 
 // SOLUTION #1
@@ -99,9 +88,9 @@ BinTree.prototype.depthSearchPreOrder = function(node) {
 };
 
 BinTree.prototype.depthSearchInOrder = function(node) {
-}
+};
 BinTree.prototype.depthSearchPostOrder = function(node) {
-}
+};
 
 var myBinTree = new BinTree(new Node(8));
 myBinTree.root.left = new Node(3);
@@ -116,5 +105,4 @@ myBinTree.root.right.right.left = new Node(13);
 // console.log(myBinTree);
 console.log(myBinTree.getLowest());
 console.log(myBinTree.getHighest());
-// console.log(myBinTree.getSize());
 console.log(myBinTree.depthSearchPreOrder());

@@ -40,12 +40,25 @@ function mergeSort(list){
 }
 // console.log(mergeSort([7,9,5,2,8,6,42,73,81,1,1047,12]));
 console.log('merge sort ' + testPerformance(mergeSort, getRandomList(10)));
+console.log('array.sort ' + testPerformance(arraySort, getRandomList(10)));
+
 console.log('merge sort ' + testPerformance(mergeSort, getRandomList(100)));
+console.log('array.sort ' + testPerformance(arraySort, getRandomList(100)));
+
 console.log('merge sort ' + testPerformance(mergeSort, getRandomList(1000)));
+console.log('array.sort ' + testPerformance(arraySort, getRandomList(1000)));
+
 console.log('merge sort ' + testPerformance(mergeSort, getRandomList(10000)));
+console.log('array.sort ' + testPerformance(arraySort, getRandomList(10000)));
+
 console.log('merge sort ' + testPerformance(mergeSort, getRandomList(100000)));
+console.log('array.sort ' + testPerformance(arraySort, getRandomList(100000)));
 
 
+
+function arraySort(input){
+  return input
+}
 
 
 function testPerformance(callback, args) {
