@@ -88,7 +88,19 @@ BinTree.prototype.depthSearchPreOrder = function(node) {
 };
 
 BinTree.prototype.depthSearchInOrder = function(node) {
+  var results = [];
+  if(!node){
+    node=this.root;
+  }
+  if(node.left){
+    results = results.concat(this.depthSearchInOrder(node.left));
+  }
+  if(ndoe.right){
+    restults = results.concat(this.depthSearchInOrder(node.right));
+  }
+  results.push(node.value);
 };
+
 BinTree.prototype.depthSearchPostOrder = function(node) {
 };
 
