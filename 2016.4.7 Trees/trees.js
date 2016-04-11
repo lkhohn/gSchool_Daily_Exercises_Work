@@ -118,3 +118,4 @@ myBinTree.root.right.right.left = new Node(13);
 console.log(myBinTree.getLowest());
 console.log(myBinTree.getHighest());
 console.log(myBinTree.depthSearchPreOrder());
+console.log(myBinTree.depthSearchInOrder());
